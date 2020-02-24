@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.STRING,
     poster: DataTypes.STRING,
     imdbID: DataTypes.STRING
-  }, {});
+  }, { sequelize });
   Movie.associate = function(models) {
     // associations can be defined here
   };
