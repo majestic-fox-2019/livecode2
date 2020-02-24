@@ -20,14 +20,27 @@ class RateController {
   static async deleteRate(req, res, next) {
     const { id } = req.params;
     try {
-      const deletedRate = Rate.delete({
+      const foundRate = await Rate.findOne({
+        where: {
+          id
+        }
+      });
+      const deletedRate = await Rate.destroy({
         where: {
           id
         }
       });
       // then
-      res.status(200);
-      res.json(deletedRate);
+      if (!deletedRate) {
+        res.status(304);
+        res.json({
+          message: "No item is modified"
+        })
+      }
+      else {
+        res.status(200);
+        res.json(foundRate);
+      }
     } catch (err) {
       next(err);
     }
