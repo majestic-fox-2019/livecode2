@@ -7,7 +7,7 @@
           {{rateData.point}}
       </div>
       <div>
-          <button>delete</button>
+          <button @click.prevent="deleteRate(rateData.id)">delete</button>
       </div>
   </div>
 </template>
@@ -19,6 +19,14 @@ export default {
     rateData: {
         type: Object
     }
+  },
+  methods: {
+      deleteRate (id) {
+          this.$store.dispatch('deleteRate', {
+            id: id,
+            movieId: this.$route.params.id
+          })
+      }
   }
 }
 </script>

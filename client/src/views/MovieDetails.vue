@@ -13,7 +13,7 @@
                 <div class="buttons">
                     <button @click.prevent="toMovieRating" style="margin-right:1%;">See Ratings</button>
                     <button @click.prevent="toAddRate" style="margin-right:1%;">Add Rating</button>
-                    <button>Edit</button>
+                    <button @click.prevent="toEditMovie">Edit</button>
                 </div>
               </div>
               <div class="bottom">
@@ -33,12 +33,16 @@ export default {
       },
       toAddRate () {
         this.$router.push(`/movie/${this.$route.params.id}/addRate`)
+      },
+      toEditMovie () {
+        this.$router.push(`/movie/${this.$route.params.id}/edit`)
       }
   },
   created () {
     this.$store.dispatch('FetchMovieDetails', {
         id: this.$route.params.id
     })
+    this.$router.push((`/movie/${this.$route.params.id}/ratings`))
   }
 }
 </script>

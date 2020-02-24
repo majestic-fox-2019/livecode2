@@ -44,6 +44,25 @@ class MovieController {
         })
         .catch(err => next(err))
     }
+
+    static filterByType (req, res, next) {
+        Movie.findAll({
+            where: {
+              type: req.params.type
+            }
+        })
+        .then(filteredMovie => {
+            if(!filteredMovie) {
+                throw({
+                    errors: 'type not found',
+                    message: "Type must be 'movie' or 'series'"
+                })
+            } else {
+                res.status(200).json(filteredMovie)
+            }
+        })
+        .catch(err => next(err))
+    }
 }
 
 module.exports = MovieController

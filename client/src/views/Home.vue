@@ -1,6 +1,9 @@
 <template>
   <div class="home">
     <h1>Movie List</h1>
+    <div class="filter">
+
+    </div>
     <div class="movieList">
       <MovieCard v-for="(movie, i) in $store.state.movieList" :key="i" :movieData="movie"></MovieCard>
     </div>

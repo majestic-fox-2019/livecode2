@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Please fill in the type field'
         },
         isIn: {
-          args: [['movie ', 'series']],
+          args: [['movie', 'series']],
           msg: "Type can only be 'series' or 'movie'"
         }
       }

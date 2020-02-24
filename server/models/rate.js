@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Point cannot be higher than 100'
         },
         min: {
-          args: 0,
+          args: -1,
           msg: 'Point cannot be lower than 0'
         }
       }
