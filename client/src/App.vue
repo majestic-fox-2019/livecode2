@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-link class="btn btn-info btn-lg m-5" :to="{name: 'Home'}">Home</router-link>
+    <router-view />
   </div>
 </template>
 

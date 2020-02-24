@@ -3,13 +3,43 @@ module.exports = (sequelize, DataTypes) => {
   const { Model } = sequelize.Sequelize
 
   class Movie extends Model { }
-
   Movie.init({
-    title: DataTypes.STRING,
-    year: DataTypes.INTEGER,
+    title: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Title is required'
+        }
+      }
+    },
+    year: {
+      type: DataTypes.INTEGER,
+      validate: {
+        isNumeric: {
+          msg: 'Year must be number'
+        },
+        notEmpty: {
+          msg: 'Year is required'
+        }
+      }
+    },
     imdbID: DataTypes.STRING,
-    type: DataTypes.STRING,
-    poster: DataTypes.STRING
+    type: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Type is required'
+        }
+      }
+    },
+    poster: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Poster is required'
+        }
+      }
+    }
   }, { sequelize });
   Movie.associate = function (models) {
     // associations can be defined here

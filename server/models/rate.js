@@ -5,8 +5,21 @@ module.exports = (sequelize, DataTypes) => {
 
   class Rate extends Model { }
   Rate.init({
-    reviewer: DataTypes.STRING,
-    point: DataTypes.INTEGER,
+    reviewer: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Reviewer is required'
+        }
+      }
+    },
+    point: {
+      type: DataTypes.INTEGER,
+      validate: {
+        min: 0,
+        max: 100
+      }
+    },
     MovieId: DataTypes.INTEGER
   }, { sequelize });
   Rate.associate = function (models) {

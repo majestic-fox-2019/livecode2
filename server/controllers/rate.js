@@ -11,7 +11,6 @@ class RateController {
         Rate
             .create(value)
             .then(rate => {
-                // console.log(rate)
                 res.status(201).json(rate)
             })
             .catch(next)

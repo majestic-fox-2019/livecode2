@@ -28,7 +28,6 @@ class MovieController {
 
     static putMovie(req, res, next) {
         console.log('masuk update movie')
-        console.log(req.body)
         const { title, year, type, poster } = req.body
 
         const value = {
@@ -37,12 +36,14 @@ class MovieController {
             type, //required (series or movie only)
             poster //required
         }
+        console.log(value)
 
         const options = {
             where: {
                 id: req.params.id
             },
-            returning: true
+            returning: true,
+            hooks: true
         }
         Movie
             .update(value, options)

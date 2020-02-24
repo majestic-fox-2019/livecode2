@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import MovieDetail from '../components/MovieDetail.vue'
 import AddRating from '../components/AddRating'
+import UpdateMovie from '../components/UpdateMovie'
+import Ratings from '../components/Ratings'
 
 Vue.use(VueRouter)
 
@@ -17,7 +19,9 @@ const routes = [
     name: 'MovieDetail',
     component: MovieDetail,
     children: [
-      {path: '/rates', name: 'AddRating', component: AddRating}
+      { path: '/rates/:id', name: 'Ratings', component: Ratings },
+      { path: '/rates/add/:id', name: 'AddRating', component: AddRating },
+      { path: '/update/:id', name: 'UpdateMovie', component: UpdateMovie }
     ]
   },
 ]
