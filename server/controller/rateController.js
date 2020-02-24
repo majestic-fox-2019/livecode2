@@ -1,6 +1,15 @@
 const { Rate } = require("../models/index");
 
 class RateController {
+  static getRating(req, res, next) {
+    Rate.findAll({ where: { MovieId: req.params.MovieId } })
+      .then(data => {
+        res.status(201).json(data);
+      })
+      .catch(err => {
+        next(err);
+      });
+  }
   static rating(req, res, next) {
     let isi = {
       reviewer: req.body.reviewer,

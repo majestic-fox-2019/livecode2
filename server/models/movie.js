@@ -6,63 +6,23 @@ module.exports = (sequelize, DataTypes) => {
     {
       title: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          isNull: {
-            msg: "title cannot be empty"
-          },
-          isEmpty: {
-            msg: "title cannot be empty"
-          }
-        }
+        allowNull: false
       },
       year: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          isNull: {
-            msg: "title cannot be empty"
-          },
-          isEmpty: {
-            msg: "title cannot be empty"
-          }
-        }
+        allowNull: false
       },
       type: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          isNull: {
-            msg: "title cannot be empty"
-          },
-          isEmpty: {
-            msg: "title cannot be empty"
-          }
-        }
+        allowNull: false
       },
       poster: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          isNull: {
-            msg: "poster cannot be empty"
-          },
-          isEmpty: {
-            msg: "poster cannot be empty"
-          }
-        }
+        allowNull: false
       },
       imdbID: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          isNull: {
-            msg: "imdbId cannot be empty"
-          },
-          isEmpty: {
-            msg: "imdbId cannot be empty"
-          }
-        }
+        allowNull: false
       }
     },
     { sequelize }

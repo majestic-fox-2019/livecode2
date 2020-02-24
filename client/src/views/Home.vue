@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <h1>judul</h1>
-    <card></card>
+    <div class="card-group">
+      <card></card>
+    </div>
   </div>
 </template>
 

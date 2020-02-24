@@ -20,7 +20,6 @@ class MovieContoller {
   }
 
   static updateMovie(req, res, next) {
-    let hasil = {};
     let isi = {
       title: req.body.title,
       year: req.body.year,
@@ -32,7 +31,16 @@ class MovieContoller {
     Movie.findOne({ where: { id: req.params.id } })
       .then(data => {
         if (data) {
-          return Movie.update(isi, { where: { id: data.id } });
+          return Movie.update(
+            {
+              title: req.body.title,
+              year: req.body.year,
+              type: req.body.type,
+              poster: req.body.poster,
+              imdbID: req.body.imdbID
+            },
+            { where: { id: req.params.id } }
+          );
         } else {
           res.status(404).json("error");
         }
