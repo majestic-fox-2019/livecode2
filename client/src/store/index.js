@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import Swal from 'sweetalert2';
 
 Vue.use(Vuex)
 const url = 'http://localhost:3000/'
 export default new Vuex.Store({
   state: {
     movies:[],
-    movie:{}
+    movie:null
   },
   mutations: {
     GET_MOVIES (state,payload){
@@ -75,7 +76,12 @@ export default new Vuex.Store({
         context.commit('GET_DETAIL_MOVIES',data)
       })
       .catch(err => {
-        console.log(err)
+        Swal.fire({
+          title: 'Error!',
+          text: err.response.data.message,
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        })
       })
     }
   },

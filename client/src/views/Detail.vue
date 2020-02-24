@@ -39,7 +39,11 @@ export default {
   },
   computed: {
     movie(){
-      return this.$store.state.movie
+      if(this.$store.state.movie === null){
+        this.$router.push({name:'Home'})
+      }else{
+        return this.$store.state.movie
+      }
     }
   }
 }

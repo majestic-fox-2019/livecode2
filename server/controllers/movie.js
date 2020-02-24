@@ -18,7 +18,11 @@ class MovieController {
         }]
       })
       .then(movie => {
-        res.status(200).json(movie)
+        if(movie){
+          res.status(200).json(movie)
+        }else{
+          next({name:'notfound'})
+        }
       })
       .catch(next)
   }

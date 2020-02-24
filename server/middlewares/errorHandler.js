@@ -4,6 +4,11 @@ function errorHandler(err, req, res, next){
       "errors": err.message,
       "message": "SequelizeValidationError"
     })
+  }if(err.name === "notfound"){
+    res.status(404).json({
+      "errors": err.name,
+      "message": "Not Found"
+    })
   }else{
     res.status(500).json({
       "errors": [],
