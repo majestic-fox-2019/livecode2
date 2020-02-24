@@ -14,6 +14,22 @@ class MovieController {
       })
   }
 
+  static findMovieUpdate(req, res, next) {
+    const id = req.params.id
+    Movie
+      .findOne({
+        where: {
+          id: id
+        }, include: Rating
+      })
+      .then(result => {
+        res.status(200).json(result)
+      })
+      .catch(err => {
+        next(err)
+      })
+  }
+
   static updateMovie(req, res, next) {
     const { title, year, imdbID, type, poster } = req.body
     const id = req.params.id 

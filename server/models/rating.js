@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const { Model } = sequelize.Sequelize
 
-  class Rating extends Model {}
+  class Rating extends Model { }
 
   Rating.init({
     name: {
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     rating: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
         notEmpty: {
@@ -30,13 +30,17 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {
           args: true,
           msg: 'Rating Cannot Be Null'
-        }
+        },
+        max: {
+          args: 100,
+          msg: 'Cannot greater than 100'
+        },
       }
     },
   }, { sequelize });
-  
-  
-  Rating.associate = function(models) {
+
+
+  Rating.associate = function (models) {
     Rating.belongsTo(models.Movie)
   };
   return Rating;

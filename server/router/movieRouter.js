@@ -6,6 +6,7 @@ const movieController = require('../controllers/movieController')
 
 router.get('/', movieController.readAll)
 router.put('/:id', movieController.updateMovie)
+router.get('/:id', movieController.findMovieUpdate)
 
 
 module.exports = router
