@@ -4,6 +4,6 @@ const rateRoute = require('./rate')
 
 router.use('/movies', movieRoute)
 
-router.use('/rate', rateRoute)
+router.use('/rates', rateRoute)
 
 module.exports = router

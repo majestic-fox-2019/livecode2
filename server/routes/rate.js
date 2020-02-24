@@ -1,7 +1,8 @@
 const router = require('express').Router()
+const controller = require('../controllers/rateController')
 
-router.post('/:movieId')
+router.post('/:movieId', controller.addRating)
 
-router.delete('/:movieId')
+router.delete('/:id', controller.deleteRate)
 
 module.exports = router
