@@ -1,11 +1,38 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Rate = sequelize.define('Rate', {
-    point: DataTypes.NUMBER,
-    reviewer: DataTypes.STRING
-  }, {});
+
+  const { Model } = sequelize.Sequelize
+
+  class Rate extends Model {}
+
+  Rate.init({
+    point: {
+      type : DataTypes.NUMBER,
+      validate : {
+        min: 0,
+        max : 100
+      }
+    },
+    reviewer: {
+      type : DataTypes.STRING,
+      validate : {
+        notEmpty : {
+          msg : 'Reviewer is required!'
+        }
+      }
+    },
+    MovieId : {
+      type : DataTypes.INTEGER,
+      validate : {
+        notEmpty : {
+          msg : 'MovieId is required!'
+        }
+      }
+    }
+  }, { sequelize })
+
   Rate.associate = function(models) {
-    // associations can be defined here
+    Rate.belongsTo(models.Movie)
   };
   return Rate;
 };

@@ -9,10 +9,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       point: {
-        type: Sequelize.NUMBER
+        type: Sequelize.INTEGER
       },
       reviewer: {
         type: Sequelize.STRING
+      },
+      MovieId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

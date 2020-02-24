@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       type: {
-        type: Sequelize.ENUM(['Movie','Series'])
+        type: Sequelize.STRING
       },
       poster: {
         type: Sequelize.STRING
