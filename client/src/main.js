@@ -5,7 +5,7 @@ import router from './router';
 import store from './store';
 
 Vue.config.productionTip = false;
-Vue.prototype.$axios = axios.create('http://localhost:3000');
+Vue.prototype.$axios = axios.create('http://localhost:3000/');
 
 new Vue({
   router,

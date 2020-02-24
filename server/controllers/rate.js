@@ -3,6 +3,16 @@ const createError = require('http-errors')
 
 class RateController {
 
+  static list(req, res, next){
+    Rate.findAll({where: {MovieId: req.params.movieId}})
+    .then(rate => {
+      res.status(200).json(rate)
+    })
+    .catch(err => {
+      next(err)
+    })
+  }
+
   static add(req, res, next){
     let rateData = {
       reviewer: req.body.reviewer,
@@ -26,11 +36,7 @@ class RateController {
     }
     Rate.destroy(rateId)
     .then(result => {
-      if (result[0] == 1){
-        res.status(200).json({"message": "Delete rate success"})
-      } else {
-        throw createError(404, {message: {message: 'Rate not found'}})
-      }
+      res.status(200).json({"message": "Delete rate success"})
     })
     .catch(err => {
       next(err)
