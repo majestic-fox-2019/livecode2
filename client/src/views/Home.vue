@@ -1,8 +1,22 @@
 <template>
   <div class="container">
     <h1>Batman</h1>
+    <div>
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Search Title</label>
+          <input
+            v-model="key"
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+        </div>
+      </form>
+    </div>
     <div class="row">
-      <div class="col-4" v-for="(movie, index) in movies" :key="index">
+      <div class="col-4" v-for="(movie, index) in filteredList" :key="index">
         <Cards :content="movie"></Cards>
       </div>
     </div>
@@ -14,6 +28,11 @@
 import Cards from "../components/MovieCard";
 
 export default {
+  data() {
+    return {
+      key: ""
+    };
+  },
   components: {
     Cards
   },
@@ -24,6 +43,11 @@ export default {
   computed: {
     movies() {
       return this.$store.state.movies;
+    },
+    filteredList() {
+      return this.movies.filter(post => {
+        return post.title.toLowerCase().includes(this.key.toLowerCase());
+      });
     }
   }
 };

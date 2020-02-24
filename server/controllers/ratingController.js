@@ -9,6 +9,7 @@ class RatingController {
             point: req.body.point,
             MovieId: req.params.movieId
         }
+        console.log(body)
         for (let i in body) {
             if (body[i] === undefined) {
                 body[i] = null
