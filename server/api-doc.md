@@ -97,6 +97,7 @@ PUT /movies/:id
 POST /rates/:movieId
 
 - Request Param(s):
+  
   - id: integer
 - Request Body:
   - reviewer: string [required],
@@ -120,6 +121,7 @@ POST /rates/:movieId
 DELETE /rates/:id
 
 - Request Param(s):
+  
   - id: integer
 - Response:
   - status: 200
@@ -127,5 +129,5 @@ DELETE /rates/:id
   ```json
   {
     "message": "Delete rate success"
-  }
+  }t
   ```
