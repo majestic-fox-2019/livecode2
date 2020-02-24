@@ -4,6 +4,7 @@ const PORT = 3000
 const cors = require('cors');
 const db = require('./models');
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 
@@ -22,10 +23,10 @@ app.get('/movies', (req,res,next)=>{
 })
 
 app.get('/movies/:id', (req,res,next)=>{
-    db.Movies.findAll({
-        where : {
-            id : req.params.id
-        }
+    db.Movies.findByPk(req.params.id, {
+        include : [{
+            model : db.Ratings
+        }]  
     })
     .then(response => {
         res.status(200).json(response)
