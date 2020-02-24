@@ -1,20 +1,30 @@
 "use strict"
 
 const { Movie } = require('../models')
+const { Rating } = require('../models')
 
 class controllerMovie {
     static findAll(req, res, next) {
-        Movie.findAll()
+        Movie.findAll({
+            include: [{
+                model: Rating
+            }]
+        })
             .then((movies) => {
                 res.status(200).json(movies)
             }).catch(next);
     }
     static findOne(req, res, next) {
         Movie.findOne({
-            where: {
-                id: req.params.id
-            }
-        })
+            include: [{
+                model: Rating
+            }]
+        },
+            {
+                where: {
+                    id: req.params.id
+                }
+            })
             .then((movie) => {
                 res.status(200).json(movie)
             }).catch(next);
