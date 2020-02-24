@@ -2,15 +2,15 @@
   <div>
     <h1>Rate This Movie</h1>
     <form @submit.prevent="addRate">
-      <label for="reviewer">Reviewer Name:</label>
+      <label class="inputLabel" for="reviewer">Reviewer Name:</label>
       <br>
-      <input type="text" id="reviewer" v-model="form.reviewer">
+      <input class="inputBox" type="text" id="reviewer" v-model="form.reviewer" placeholder="Enter Reviewer Name">
       <br>
-      <label for="points">Points:</label>
+      <label class="inputLabel" for="points">Points:</label>
       <br>
-      <input type="number" id="points" v-model="form.points">
+      <input class="inputBox" type="number" id="points" v-model="form.points" placeholder="Enter Points">
       <br>
-      <button type="submit">Submit</button>
+      <button type="submit" class="submitButton">Submit</button>
     </form>
   </div>
 </template>
@@ -41,5 +41,29 @@ export default {
 </script>
 
 <style scoped>
-
+.submitButton {
+  border: none;
+  background-color: #91ffff;
+  border-radius: 10px;
+  width: 7vw;
+  height: 5vh;
+  margin-top: 3%;
+  cursor: pointer;
+}
+.submitButton:hover {
+  background-color: #76caca;
+}
+.inputBox {
+  border: none;
+  background-color: #c1c1c1;
+  border-radius: 10px;
+  width: 20vw;
+  height: 5vh;
+  padding: 2%;
+  font-size: 1.5em;
+}
+.inputLabel {
+  font-size: 1em;
+  font-weight: bold;
+}
 </style>

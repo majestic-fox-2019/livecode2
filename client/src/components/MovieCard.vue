@@ -8,7 +8,7 @@
           <h4>{{movieData.year}}</h4>
           <a :href="'https://www.imdb.com/title/' + movieData.imdbID">IMDB</a>
           <h2>{{movieData.type}}</h2>
-          <button @click.prevent="toDetails(movieData.id)">See Details</button>
+          <button class="seeDetailsButton" @click.prevent="toDetails(movieData.id)">See Details</button>
       </div>
   </div>
 </template>
@@ -30,6 +30,18 @@ export default {
 </script>
 
 <style scoped>
+.seeDetailsButton {
+  width: 7vw;
+  height: 5vh;
+  margin-left: 1%;
+  border: none;
+  background: #b8f0a9c1;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.seeDetailsButton:hover {
+    background: #86af7ac1;
+}
 .moviePoster-img {
     height: 100%;
     width: 100%;
@@ -47,6 +59,7 @@ export default {
 }
 .movieDetails {
     height: 100%;
-    width: 50%;
+    width: 10%;
+    text-align: center;
 }
 </style>

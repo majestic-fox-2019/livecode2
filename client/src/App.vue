@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <div style="cursor: pointer;" @click="toHome">
-        Home
+        <h1 style="margin:0;"><i class="fas fa-home"></i></h1>
       </div>
     </div>
     <router-view/>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import router from '../router'
+import Swal from 'sweetalert2'
 
 Vue.use(Vuex)
 
@@ -29,7 +30,15 @@ export default new Vuex.Store({
         this.commit('SET_MOVIELIST', data)
       })
       .catch(err => {
-        console.log(err)
+        let message = ''
+        err.response.data.message.forEach(element => {
+          message += `${element} `
+        });
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message,
+        })
       })
     },
     FetchMovieDetails (state, payload) {
@@ -41,7 +50,15 @@ export default new Vuex.Store({
         this.commit('SET_MOVIEDETAILS', data)
       })
       .catch(err => {
-        console.log(err)
+        let message = ''
+        err.response.data.message.forEach(element => {
+          message += `${element} `
+        });
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message,
+        })
       })
     },
     addRate (state, payload) {
@@ -65,7 +82,15 @@ export default new Vuex.Store({
         router.push(`/movie/${payload.movieId}/ratings`)
       })
       .catch(err => {
-        console.log(err.response)
+        let message = ''
+        err.response.data.message.forEach(element => {
+          message += `${element} `
+        });
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message,
+        })
       })
     },
     deleteRate (state, payload) {
@@ -74,12 +99,25 @@ export default new Vuex.Store({
         method: 'delete'
       })
       .then (({ data }) => {
+        Swal.fire(
+          'Deleted!',
+          'Rate has been deleted.',
+          'success'
+          )
         this.dispatch('FetchMovieDetails', {
           id: payload.movieId
         })
       })
       .catch(err => {
-        console.log(err.response)
+        let message = ''
+        err.response.data.message.forEach(element => {
+          message += `${element} `
+        });
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message,
+        })
       })
     },
     editMovie (state, payload) {
@@ -109,7 +147,15 @@ export default new Vuex.Store({
         router.push(`/movie/${payload.movieId}/ratings`)
       })
       .catch(err => {
-        console.log(err.response)
+        let message = ''
+        err.response.data.message.forEach(element => {
+          message += `${element} `
+        });
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message,
+        })
       })
     },
     filteredMovies (state, payload) {
@@ -121,7 +167,15 @@ export default new Vuex.Store({
         this.commit('SET_MOVIELIST', data)
       })
       .catch(err => {
-        console.log(err.response)
+        let message = ''
+        err.response.data.message.forEach(element => {
+          message += `${element} `
+        });
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message,
+        })
       })
     }
   },

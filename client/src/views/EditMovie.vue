@@ -2,29 +2,29 @@
   <div>
       <h1>Edit This Movie</h1>
       <form @submit.prevent="editMovie">
-          <label for="Title">Title:</label>
+          <label class="inputLabel" for="Title">Title:</label>
           <br>
-          <input type="text" id="title" v-model="form.title">
+          <input class="inputBox" type="text" id="title" v-model="form.title">
           <br>
-          <label for="year">Year:</label>
+          <label class="inputLabel" for="year">Year:</label>
           <br>
-          <input type="number" id="year" v-model="form.year">
+          <input class="inputBox" type="number" id="year" v-model="form.year">
           <br>
-          <label for="imdbId">IMDB ID:</label>
+          <label class="inputLabel" for="imdbId">IMDB ID:</label>
           <br>
-          <input type="text" id="imdbId" v-model="form.imdbId">
+          <input class="inputBox" type="text" id="imdbId" v-model="form.imdbId">
           <br>
-          <label for="type">Type:</label>
+          <label class="inputLabel" for="type">Type:</label>
           <br>
-            <select id="type" name="TypeList">
+            <select class="inputBox" id="type" name="TypeList">
                 <option v-for="(type, i) in types" :key="i" :value="type.name">{{type.display}}</option>
             </select>
           <br>
-          <label for="poster">Poster:</label>
+          <label class="inputLabel" for="poster">Poster:</label>
           <br>
-          <input type="text" id="poster" v-model="form.poster">
+          <input class="inputBox" type="text" id="poster" v-model="form.poster">
           <br>
-          <button type="submit">Edit Movie</button>
+          <button class="editButton" type="submit">Edit Movie</button>
       </form>
   </div>
 </template>
@@ -84,5 +84,29 @@ export default {
 </script>
 
 <style scoped>
-
+.editButton {
+    width: 6vw;
+    height: 5vh;
+    border: none;
+    border-radius: 10px;
+    background-color: #fbc45e;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.editButton:hover {
+    background-color: #b89045;
+}
+.inputLabel {
+    font-size: 1em;
+    font-weight: bold;
+}
+.inputBox {
+    width: 30vw;
+    height: 5vh;
+    border-radius: 10px;
+    border: none;
+    background-color: #c1c1c1;
+    padding: 2%;
+    font-size: 1em;
+}
 </style>
