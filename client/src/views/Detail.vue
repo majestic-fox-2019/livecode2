@@ -30,7 +30,6 @@ export default {
   props: ['id'],
   created() {
     this.load()
-    // this.$router.push({name:'Rate'})
   },
   methods: {
     load() {
@@ -39,11 +38,7 @@ export default {
   },
   computed: {
     movie(){
-      if(this.$store.state.movie === null){
-        this.$router.push({name:'Home'})
-      }else{
-        return this.$store.state.movie
-      }
+      return this.$store.state.movie
     }
   }
 }

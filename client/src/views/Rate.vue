@@ -86,7 +86,7 @@ export default {
       .then(res => {
         Swal.fire({
           title: 'Success delete rate!',
-          text: 'success delete rate',
+          text: res.data.message,
           icon: 'success',
           confirmButtonText: 'Cool'
         })
@@ -104,7 +104,6 @@ export default {
   },
   computed: {
     movie(){
-      console.log(this.$store.state.movie)
       return this.$store.state.movie
     }
   }

@@ -10,7 +10,7 @@ class MovieController {
         MovieId
       })
       .then(rate => {
-        res.status(200).json(rate)
+        res.status(201).json(rate)
       })
       .catch(next)
   }
@@ -25,7 +25,9 @@ class MovieController {
         return rate.destroy()
       })
       .then(rate => {
-        res.status(200).json(deleted)
+        res.status(200).json({
+          "message": "Delete rate success"
+        })
       })
       .catch(next)
   }

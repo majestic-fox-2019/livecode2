@@ -41,9 +41,6 @@ export default {
     }
   },
   methods:{
-    load() {
-      this.$store.dispatch('getDetailMovies',{id:this.id})
-    },
     update() {
       axios({
         method:"put",

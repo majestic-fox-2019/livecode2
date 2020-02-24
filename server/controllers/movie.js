@@ -41,7 +41,7 @@ class MovieController {
         })
       })
       .then(movie => {
-        res.status(201).json(movie)
+        res.status(200).json(movie)
       })
       .catch(next)
   }
