@@ -14,7 +14,7 @@ module.exports = {
       year: {
         type: Sequelize.STRING
       },
-      imbdID: {
+      imdbID: {
         type: Sequelize.STRING
       },
       type: {

@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   Movie.init({
     title: DataTypes.STRING,
     year: DataTypes.STRING,
-    imbdID: DataTypes.STRING,
+    imdbID: DataTypes.STRING,
     type: DataTypes.STRING,
     poster: DataTypes.STRING
   }, {
