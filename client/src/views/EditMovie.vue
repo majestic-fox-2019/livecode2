@@ -92,6 +92,7 @@ export default {
     background-color: #fbc45e;
     margin-top: 2%;
     margin-bottom: 2%;
+    cursor: pointer;
 }
 .editButton:hover {
     background-color: #b89045;

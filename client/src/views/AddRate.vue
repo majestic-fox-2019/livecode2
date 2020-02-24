@@ -49,6 +49,7 @@ export default {
   height: 5vh;
   margin-top: 3%;
   cursor: pointer;
+  margin-bottom: 3%;
 }
 .submitButton:hover {
   background-color: #76caca;
