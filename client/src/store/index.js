@@ -25,6 +25,28 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err)
         })
+    },
+    getFilteredTypeMovies(context, filterType) {
+      axios
+        .get(`${url}/movies/find/${filterType}`)
+        .then(res => {
+          console.log(res.data)
+          context.commit('LISTALLMOVIES', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    getFilteredTitleMovies(context, filterTitle) {
+      axios
+        .get(`${url}/movies/title/${filterTitle}`)
+        .then(res => {
+          console.log(res.data)
+          context.commit('LISTALLMOVIES', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 });

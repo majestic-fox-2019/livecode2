@@ -3,9 +3,25 @@ const createError = require('http-errors')
 
 class MovieController {
     static showAll(req, res, next) {
+        let option
+        if (req.params.type) {
+            option = {
+                type: req.params.type
+            }
+        } else {
+            option = {}
+        }
+
+        if (req.params.title) {
+            option = {
+                title: req.params.title
+            }
+        }
+
         Movie
             .findAll({
-                include: [Rate]
+                include: [Rate],
+                where: option
             })
             .then(data => {
                 res.status(200).json(data)
