@@ -7,11 +7,15 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     baseUrl: 'http://localhost:3000',
-    movieList: []
+    movieList: [],
+    movieDetails: null
   },
   mutations: {
     SET_MOVIELIST (state, payload) {
       state.movieList = payload
+    },
+    SET_MOVIEDETAILS (state, payload) {
+      state.movieDetails = payload
     }
   },
   actions: {
@@ -29,7 +33,14 @@ export default new Vuex.Store({
     },
     FetchMovieDetails (state, payload) {
       axios({
-        url: this.state.baseUrl + '/movies/' + payload.id
+        url: this.state.baseUrl + '/movies/' + payload.id,
+        method: 'get'
+      })
+      .then(({ data }) => {
+        this.commit('SET_MOVIEDETAILS', data)
+      })
+      .catch(err => {
+        console.log(err)
       })
     }
   },
