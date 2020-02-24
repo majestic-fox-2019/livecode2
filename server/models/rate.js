@@ -4,9 +4,41 @@ module.exports = (sequelize, DataTypes) => {
 
   class Rate extends Model {}
   Rate.init({
-    reviewer: DataTypes.STRING,
-    point: DataTypes.INTEGER,
-    MovieId: DataTypes.INTEGER
+    reviewer: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Please enter your reviewer'
+        }
+      }
+    },
+    point: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Please enter your point'
+        },
+        min: {
+          args: 1,
+          msg: "point min 1"
+        },
+        max: {
+          args: 10,
+          msg: "point max 10"
+        }
+      }
+    },
+    MovieId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Please enter movieId'
+        },
+      }
+    }
   }, { sequelize });
   Rate.associate = function(models) {
     // associations can be defined here

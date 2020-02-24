@@ -4,11 +4,33 @@ module.exports = (sequelize, DataTypes) => {
 
   class Movie extends Model {}
   Movie.init({
-    title: DataTypes.STRING,
-    year: DataTypes.INTEGER,
-    type: DataTypes.STRING,
-    poster: DataTypes.STRING,
-    imdbID: DataTypes.STRING
+    title: {
+      type: DataTypes.STRING,
+    },
+    year: {
+      type: DataTypes.INTEGER,
+      validate: {
+        isNumeric: {
+          arg: true,
+          msg: "year must be number"
+        }
+      }
+    },
+    type: {
+      type: DataTypes.STRING,
+      validate: {
+        isIn: {
+          arg: [['movie', 'series']],
+          msg: "type must be movie/series"
+        }
+      }
+    },
+    poster: {
+      type: DataTypes.STRING, 
+    },
+    imdbID: {
+      type: DataTypes.STRING
+    }
   }, { sequelize });
   Movie.associate = function(models) {
     // associations can be defined here
