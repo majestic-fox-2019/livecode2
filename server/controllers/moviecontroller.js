@@ -1,4 +1,5 @@
 const { Movie } = require('../models')
+const createError = require('http-errors')
 
 class MovieController{
 
@@ -35,6 +36,7 @@ class MovieController{
       poster: req.body.poster,
       imdbID: req.body.imdbID
     }
+    console.log(dataMovie)
     Movie
     .update(dataMovie,{
       where: {id: req.params.id},
@@ -45,11 +47,12 @@ class MovieController{
       res.status(200).json(result[1])
     })
     .catch(err => {
+      console.log(err)
       next(err)
     })
   }
 
-  static 
+
 }
 
 module.exports = MovieController

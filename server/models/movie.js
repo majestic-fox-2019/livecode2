@@ -49,6 +49,7 @@ module.exports = (sequelize, DataTypes) => {
   
   
   Movie.associate = function(models) {
+    Movie.hasMany(models.Rate)
     // associations can be defined here
   };
   return Movie;
