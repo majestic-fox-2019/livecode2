@@ -1,7 +1,7 @@
 function errorHandler(err, req, res, next){
   if(err.name === "SequelizeValidationError"){
     res.status(400).json({
-      "errors": err.errors,
+      "errors": err.message,
       "message": "SequelizeValidationError"
     })
   }else{

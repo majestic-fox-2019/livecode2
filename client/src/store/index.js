@@ -30,6 +30,42 @@ export default new Vuex.Store({
         console.log(err)
       })
     },
+    getMoviesTitle (context,payload) {
+      axios({
+        method:"get",
+        url:`${url}movies`
+      })
+      .then(({data}) => {
+        let result = []
+        for(let i =0; i< data.length; i++){
+          if(data[i].title.toLowerCase().search(payload.title.toLowerCase()) !== -1){
+            result.push(data[i])
+          }
+        }
+        context.commit('GET_MOVIES',result)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    },
+    getMoviesType (context,payload) {
+      axios({
+        method:"get",
+        url:`${url}movies`
+      })
+      .then(({data}) => {
+        let result = []
+        for(let i =0; i< data.length; i++){
+          if(data[i].type === payload.type){
+            result.push(data[i])
+          }
+        }
+        context.commit('GET_MOVIES',result)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    },
     getDetailMovies (context,payload) {
       axios({
         method:"get",

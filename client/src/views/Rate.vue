@@ -1,6 +1,6 @@
 <template>
   <div class="p-5">
-    <form @submit.prevent="addRate">
+    <form @submit.prevent="addRate" class="pb-4">
       <div class="form-group">
         <label >Reviewer</label>
         <input type="text" class="form-control" v-model='reviewer'>
@@ -11,35 +11,33 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Reviewer</th>
-      <th scope="col">Point</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-  </tbody>
-</table>
+    <p>Table rates</p>
+    <table class="table pt-2">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Reviewer</th>
+          <th scope="col">Point</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="rate in movie.Rates" :key="rate.id">
+          <th scope="row">{{rate.id}}</th>
+          <td>{{rate.reviewer}}</td>
+          <td>{{rate.point}}</td>
+          <td>
+            <button @click="deleteRate(rate.id)" class="btn btn-danger">delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
   name:'Rate',
@@ -54,18 +52,58 @@ export default {
     addRate() {
       axios({
         method:"post",
-        url:`http://localhost:3000/rates${this.id}`,
+        url:`http://localhost:3000/rates/${this.id}`,
         data:{
           reviewer:this.reviewer,
           point:this.point
         }
       })
       .then(res => {
-
+        Swal.fire({
+          title: 'Success add rate!',
+          text: 'success add rate',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+        this.$store.dispatch('getDetailMovies',{id:this.id})
       })
       .catch(err => {
-        console.log(err)
+        Swal.fire({
+          title: 'Error!',
+          text: err.response.data.errors,
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        })
       })
+    },
+    deleteRate(id) {
+      axios({
+        method:"delete",
+        url:`http://localhost:3000/rates/${id}`,
+      })
+      .then(res => {
+        Swal.fire({
+          title: 'Success delete rate!',
+          text: 'success delete rate',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+        this.$store.dispatch('getDetailMovies',{id:this.id})
+      })
+      .catch(err => {
+        Swal.fire({
+          title: 'Error!',
+          text: err.response.data.errors,
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        })
+      })
+    }
+  },
+  computed: {
+    movie(){
+      console.log(this.$store.state.movie)
+      return this.$store.state.movie
     }
   }
 }
