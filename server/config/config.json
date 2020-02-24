@@ -1,0 +1,10 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "erynrizky",
+    "database": "p2_final_lc",
+    "host": "127.0.0.1",
+    "dialect": "postgres"  
+  }
+}
+
