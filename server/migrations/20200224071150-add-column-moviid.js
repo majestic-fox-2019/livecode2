@@ -1,5 +1,5 @@
 'use strict';
-const dataMovie = require('../seeding')
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     /*
@@ -7,13 +7,9 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:
-      return queryInterface.bulkInsert('People', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
+      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
       */
-    // return queryInterface.bulkInsert('Movie', dataMovie, { sequelize });
-    return queryInterface.bulkInsert('Movies', dataMovie, {});
+    return queryInterface.addColumn('Rates', 'MovieId', Sequelize.INTEGER);
   },
 
   down: (queryInterface, Sequelize) => {
@@ -22,7 +18,9 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:
+      return queryInterface.dropTable('users');
+      
       */
-    return queryInterface.bulkDelete('Movies', null, {});
+    return queryInterface.removeColumn('Rates');
   }
 };
