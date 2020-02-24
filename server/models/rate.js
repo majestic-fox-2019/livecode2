@@ -19,9 +19,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
-          len: {
-            args: [0, 100],
-            msg: 'Point can only between 0 - 100'
+          range(point) {
+            if (point < 0 || point > 100) {
+              throw new Error('Point value must be between 0 - 100')
+            }
           }
         }
       },

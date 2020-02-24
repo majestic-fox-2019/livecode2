@@ -3,56 +3,50 @@
     <b-card class="my-5 text-center mx-auto shadow" style="width:50%;">
       <h2>Home</h2>
     </b-card>
+
+    <div class="row flex justify-content-center my-5">
+      <b-card class="col-6 shadow">
+        <b-form-group label="Sort by" class="font-weight-bold">
+          <b-form-select v-model="filter" :options="options"></b-form-select>
+        </b-form-group>
+      </b-card>
+    </div>
     <!-- <pre>{{ movies }}</pre> -->
     <b-card class="p-5 container shadow">
-      <b-card
-        :img-src="movie.poster"
-        :img-alt="movie.title"
-        img-height="500"
-        img-width="400"
-        img-left
-        class="mb-3 shadow"
-        v-for="movie in movies"
-        :key="movie.id"
-      >
-        <b-list-group>
-          <b-list-group-item>
-            <span class="font-weight-bold mr-2">Title:</span>
-            {{ movie.title }}
-          </b-list-group-item>
-          <b-list-group-item>
-            <span class="font-weight-bold mr-2">Year Released:</span>
-            {{ movie.year }}
-          </b-list-group-item>
-          <b-list-group-item>
-            <span class="font-weight-bold mr-2">IMDB:</span>
-            {{ movie.imdbID }}
-          </b-list-group-item>
-          <b-list-group-item>
-            <span class="font-weight-bold mr-2">Type:</span>
-            {{ movie.type.toUpperCase() }}
-          </b-list-group-item>
-          <b-button
-            class="mt-5 font-weight-bold"
-            @click.prevent="toRate({ id: movie.id, title: movie.title })"
-            >Rate</b-button
-          >
-        </b-list-group>
-      </b-card>
+      <Card v-for="movie in movies" :key="movie.id" :movie="movie" />
     </b-card>
   </div>
 </template>
 
 <script>
+import Card from '../components/Card'
 export default {
   name: 'Home',
-  components: {},
+  components: {
+    Card
+  },
   created() {
     this.getAllMovies()
   },
+  data() {
+    return {
+      filter: 'All Type',
+      options: [
+        'All Type',
+        { value: 'movie', text: 'Movie' },
+        { value: 'series', text: 'Series' }
+      ]
+    }
+  },
   computed: {
     movies() {
-      return this.$store.state.movieList
+      if (this.filter && this.filter !== 'All Type') {
+        return this.$store.state.movieList.filter(
+          (el) => el.type == this.filter
+        )
+      } else {
+        return this.$store.state.movieList
+      }
     }
   },
   methods: {

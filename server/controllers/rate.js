@@ -3,6 +3,7 @@ const { Rate } = require('../models')
 class Controller {
   static create(req, res, next) {
     const { reviewer, point } = req.body
+    console.log(req.body)
     Rate.create({
       reviewer,
       point,

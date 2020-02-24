@@ -13,7 +13,7 @@ const routes = [
   },
   {
     path: '/:id/:title',
-    name: 'Rate',
+    name: 'rating',
     component: Rate
   }
 ]
