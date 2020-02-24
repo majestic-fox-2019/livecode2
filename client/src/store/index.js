@@ -111,6 +111,18 @@ export default new Vuex.Store({
       .catch(err => {
         console.log(err.response)
       })
+    },
+    filteredMovies (state, payload) {
+      axios({
+        url: this.state.baseUrl + '/movies/type/' + payload.target,
+        method: 'get'
+      })
+      .then(({ data }) => {
+        this.commit('SET_MOVIELIST', data)
+      })
+      .catch(err => {
+        console.log(err.response)
+      })
     }
   },
   modules: {

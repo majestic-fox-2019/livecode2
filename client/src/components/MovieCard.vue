@@ -6,7 +6,7 @@
       <div class="movieDetails">
           <h1>{{movieData.title}}</h1>
           <h4>{{movieData.year}}</h4>
-          <a :href="'https://www.imdb.com/title/' + movieData.imdbID">{{movieData.imdbID}}</a>
+          <a :href="'https://www.imdb.com/title/' + movieData.imdbID">IMDB</a>
           <h2>{{movieData.type}}</h2>
           <button @click.prevent="toDetails(movieData.id)">See Details</button>
       </div>
