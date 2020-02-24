@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link>
+      <router-link class="mx-5" to="/">Home</router-link>
+      <router-link class="mx-5" to="/category/movie">Movie</router-link>
+      <router-link class="mx-5" to="/category/series">Series</router-link>
     </div>
     <router-view />
   </div>

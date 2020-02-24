@@ -1,6 +1,21 @@
 const { Movie, Rate } = require('../models/index')
 
 module.exports = class {
+  static getByCategory(req, res, next) {
+    Movie.findAll({
+      where: {
+        type: req.body.type
+      }
+    })
+      .then(result => {
+        res.status(200).json(result)
+      })
+      .catch(err => {
+        console.log(err)
+
+        res.status(400).json(err)
+      })
+  }
   static getById(req, res, next) {
     let MovieSearched = null
     Movie.findByPk(req.params.id)
