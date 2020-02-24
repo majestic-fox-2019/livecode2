@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import DetailMovie from "../components/moviedetail.vue"
+import DetailMovie from "../components/movie.vue"
 import RateMovie from "../components/ratemovie.vue"
 import NewRate from "../components/newrate.vue"
+import AddRate from "../components/newrate.vue"
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,22 +14,25 @@ const routes = [
     component: Home
   },
   {
-    path: "ratemovie",
-    name: "RatingMovie",
-    component: RateMovie
+    path: "/movie",
+    name: "DetailMovie",
+    component: DetailMovie,
   },
   {
-    path: "newrate",
+    path: "/newrate",
     name: "NewRate",
     component: NewRate
   },
   {
-    path: "/detailmovie",
-    name: "DetailMovie",
-    component: DetailMovie,
+    path: "/ratemovie",
+    name: "RatingMovie",
+    component: RateMovie
   },
-
-
+  {
+    path: "/addrate",
+    name: "AddRate",
+    component: AddRate
+  },
 ]
 
 const router = new VueRouter({

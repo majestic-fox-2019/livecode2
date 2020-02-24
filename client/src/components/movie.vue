@@ -7,8 +7,8 @@
             <img src class="card-img" alt />
           </div>
           <div class="col-md-8">
-            <div class="card-body">
-              <div class="row">
+            <div>
+              <div class="row navigasi">
                 <div class="col-4">
                   <router-link
                     :to="{name:'DetailMovie'}"
@@ -51,5 +51,9 @@ export default {};
 }
 .behalter {
   margin-top: 100px;
+}
+.col-md-8 {
+  align-items: center;
+  align-content: center;
 }
 </style>

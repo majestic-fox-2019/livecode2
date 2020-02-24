@@ -1,9 +1,9 @@
 var express = require('express')
-var router = express.Router()
 var Movie = require("../controllers/movies")
+var router = express.Router()
 
-router.get("/", Movie.findAll);
-router.get("/:id", Movie.findOne);
+router.get("/", Movie.getAll);
+router.get("/:MovieId", Movie.findOne);
 router.put("/:id", Movie.updateOne);
 router.post("rate/:MovieId", Movie.createRate);
 router.delete(":MovieId", Movie.deleteOne)

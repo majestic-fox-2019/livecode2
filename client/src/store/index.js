@@ -16,7 +16,7 @@ export default new Vuex.Store({
     getAllData({ commit }) {
       axios({
         method: "GET",
-        url: "http:localhost:3000/movies"
+        url: "http://localhost:3000"
       })
         .then(response => {
           commit("saveData", response);

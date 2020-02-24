@@ -1,8 +1,12 @@
-const Movie = require("../models").Movie
+const { Rate } = require("../models")
 
-class esController {
+class rateController {
     static getAll(req, res, next) {
-        Movie.findAll()
+        Rate.findAll({
+            where: {
+                FilmId: req.params.id
+            }
+        })
             .then(response => {
                 res.status(200).json(response)
             })
@@ -11,7 +15,7 @@ class esController {
             })
     }
     static findOne(req, res, net) {
-        es.findOne({
+        Rate.findOne({
             where: {
                 id: req.params.id
             }
@@ -37,7 +41,7 @@ class esController {
         if (errorArr.length >= 1) {
             throw (errorArr)
         }
-        es.findOne({
+        Rate.findOne({
             where: {
                 id: req.params.id
             }
@@ -76,11 +80,9 @@ class esController {
             .catch(error => {
                 console.log(error)
             })
-
-
     }
     static deleteOne(req, res, next) {
-        es.destroy({
+        Rate.destroy({
             where: {
                 id: req.params.id
             }
