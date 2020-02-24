@@ -2,16 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      name: 'John Doe',
-      isBetaMember: false
-    }], {});
-    */
-    return queryInterface.bulkInsert('People', [{
+    return queryInterface.bulkInsert('Movies', [{
       "title": "Batman Begins",
       "year": "2005",
       "imdbID": "tt0372784",
@@ -64,15 +55,10 @@ module.exports = {
       "poster": "https://m.media-amazon.com/images/M/MV5BOGZmYzVkMmItM2NiOS00MDI3LWI4ZWQtMTg0YWZkODRkMmViXkEyXkFqcGdeQXVyODY0NzcxNw@@._V1_SX300.jpg",
       "createdAt": new Date(),
       "updatedAt": new Date()
-    }]},
+    }], {});
+  },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
+    return queryInterface.bulkDelete('Movies', null, {});
   }
 };

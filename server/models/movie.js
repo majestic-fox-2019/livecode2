@@ -4,14 +4,14 @@ module.exports = (sequelize, DataTypes) => {
   class Movie extends Model { }
   Movie.init({
     title: DataTypes.STRING,
-    year: DataTypes.NUMBER,
+    year: DataTypes.STRING,
     imdbID: DataTypes.STRING,
     type: DataTypes.STRING,
     poster: DataTypes.STRING
   }, { sequelize })
 
   Movie.associate = function (models) {
-    // associations can be defined here
+    Movie.hasMany(models.Rating)
   };
   return Movie;
 };
