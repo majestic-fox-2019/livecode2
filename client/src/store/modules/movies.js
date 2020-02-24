@@ -24,9 +24,9 @@ const mutations = {
 }
 
 const actions = {
-  "get all movie"({ commit }) {
+  "get all movie"({ commit }, query = "") {
     axios({
-      url: "/movies",
+      url: `/movies?q=${query}`,
       method: "get"
     })
       .then(({ data }) => {

@@ -1,6 +1,13 @@
 <template>
   <div class="home">
-    <b-jumbotron header="Welcom to Movie Reviewer"> </b-jumbotron>
+    <b-jumbotron header="Welcom to Movie Reviewer">
+      <form @submit.prevent="search">
+        <div class="form-group">
+          <input type="text" class="form-control" v-model="q" />
+        </div>
+        <button class="btn btn-success">Search</button>
+      </form>
+    </b-jumbotron>
     <b-container>
       <b-row>
         <b-col
@@ -58,10 +65,17 @@ export default {
     vm.$store.dispatch("get all movie");
   },
   data() {
-    return {};
+    return {
+      q: ""
+    };
   },
   computed: {
     ...mapGetters(["getAllMovie"])
+  },
+  methods: {
+    search() {
+
+    }
   }
 };
 </script>
