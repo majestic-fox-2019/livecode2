@@ -7,7 +7,7 @@ List of available endpoints:
 - `PUT /movies/:id`
 
 - `POST /rate/:movieId`
-- `DELETE /rate/:movieId`
+- `DELETE /rate/:id`
 
 Error response format:
 Status: 4xx or 5xx
