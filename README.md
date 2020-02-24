@@ -4,11 +4,7 @@
 
 Buatlah sebuah web app dengan fitur sebagai berikut:
 
-<<<<<<< HEAD
 - Manage Movie and Rating Movie
-=======
-- Manage Movie and Rating Movies
->>>>>>> 67c30d1435ca3170d7f253eac16f47a129e58dea
   - Show Movies
   - Show Movie Rates detail
   - Add Rate to a Movie
