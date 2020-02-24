@@ -13,10 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     point: {
       type: DataTypes.INTEGER,
       validate: {
+        notNull: {msg: "point must be filled"},
         notEmpty: {msg: "point must be filled"},
-        max:{args: 100, msg: "max point is 100"},
-        min: {args: 0, msg:"min point is 0"}
-      }
+        max:{args: 100, msg: "max point is 100"}
+      },allowNull: false
     },
     MovieId: DataTypes.INTEGER
   }, {sequelize})

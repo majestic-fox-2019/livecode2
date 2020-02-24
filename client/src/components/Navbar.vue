@@ -1,9 +1,7 @@
 <template>
   <div>
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand justify-content-center" >
+<nav class="navbar navbar-light bg-light d-flex justify-content-center">
     <router-link to="/">Home</router-link>
-  </a>
 </nav>
   </div>
 </template>

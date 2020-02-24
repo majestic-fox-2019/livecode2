@@ -1,19 +1,20 @@
 <template>
   <div class="container">
     <div v-for="movie in movies" :key="movie.id">
-      <div class="box mt-3">
-        <!-- <div class="" style="max-width:50px"> -->
-         <img :src="movie.poster" alt="">
-        <!-- </div> -->
-        <!-- <div> -->
-          <h4>{{movie.title}}</h4>
-          <p>{{movie.year}}</p>
-          <p>{{movie.type}}</p>
-          <a href="">IMDB</a>
-          <button @click="goDetail(movie.id)">Detail</button>
-        <!-- </div> -->
+      <div>
+        <div class="card mb-3 d-flex ">
+          <div class="col">
+            <img :src="movie.poster" class="card-img-top" alt="..." style="max-height:400px; max-width:300px">
+          </div>
+          <div class="card-body col">
+            <h5 class="card-title">{{movie.title}}</h5>
+            <p class="card-text">{{movie.year}}</p>
+            <p class="card-text">{{movie.type}}</p>
+            <a href="https://www.imdb.com/title/">IMDB</a><br>
+            <button type="button" class="btn btn-primary"  @click="goDetail(movie.id)">Detail</button>
+          </div>
+        </div>
       </div>
-
     </div>
 
   </div>

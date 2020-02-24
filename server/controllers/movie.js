@@ -47,8 +47,9 @@ class ControllerMovie {
   }
 
   static addRate(req, res, next) {
+    console.log("masuuuuk")
     let {reviewer, point} = req.body
-    let MovieId = req.params.MovieId
+    let MovieId = req.params.movieId
     Rate.create({reviewer, point, MovieId})
     .then(rate => {
       let obj = {
@@ -63,12 +64,24 @@ class ControllerMovie {
     .catch(err => {
       next(err)
     })
+
   }
 
   static deleteRate(req, res, next) {
     Rate.destroy({where:{id:req.params.id}})
     .then(() => {
       res.status(200).json({message: "Delete rate success"})
+    })
+    .catch(err => {
+      next(err)
+    })
+  }
+
+  
+  static showRate(req, res, next) {
+    Rate.findAll({where:{MovieId:req.params.movieId}})
+    .then(rates => {
+      res.status(200).json(rates)
     })
     .catch(err => {
       next(err)
