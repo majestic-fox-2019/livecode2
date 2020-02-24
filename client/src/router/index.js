@@ -18,8 +18,8 @@ const routes = [
     component: Detail
   },
   {
-    path: "/movies/:id",
-    name: "Rate",
+    path: "/rates/:movieId",
+    name: "Rates",
     component: Rate
   }
 ];

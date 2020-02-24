@@ -7,6 +7,7 @@
           <h5>{{movie.title}}</h5>
           <p>{{movie.year}}</p>
           <p>{{movie.type}}</p>
+          <a href='https://www.imdb.com/title/'>imdb</a>
           <button @click="detail(movie.id)">details</button>
         </div>
       </div>
@@ -15,29 +16,36 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
   data() {
     return {
-      movies: null
+      // movies: null
+    }
+  },
+  computed: {
+    movies () {
+      return this.$store.state.movies
     }
   },
   created() {
-    axios({
-      url: 'http://localhost:3000/movies',
-      method: 'get'
-    })
-      .then(movies=>{
-        this.movies = movies.data
-        console.log(movies)
-      })
-      .catch(error=>{
-        console.log(error)
-      })
+    this.$store.dispatch('movies')
+    // axios({
+    //   url: 'http://localhost:3000/movies',
+    //   method: 'get'
+    // })
+    //   .then(movies=>{
+    //     this.movies = movies.data
+    //     console.log(movies)
+    //   })
+    //   .catch(error=>{
+    //     console.log(error)
+    //   })
   },
   methods: {
     detail(id) {
+      this.$store.state.id = id
       this.$router.push({ name: 'Detail', params: { id }})
     }
   }
