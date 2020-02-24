@@ -3,7 +3,13 @@ module.exports = (sequelize, DataTypes) => {
   const { Model } = sequelize.Sequelize
   class Rate extends Model { }
   Rate.init({
-    point: DataTypes.INTEGER,
+    point: {
+      type: DataTypes.INTEGER,
+      validate: {
+        min: 1,
+        max: 100
+      }
+    },
     reviewer: DataTypes.STRING,
     MovieId: DataTypes.INTEGER
   }, { sequelize })

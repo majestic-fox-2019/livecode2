@@ -17,8 +17,9 @@ class ControllerMovie {
 
   static movieById(req, res, next) {
     let id = req.params.id
-    Movie
-      .findOne({ where: { id: id } })
+    Movie.findOne({
+      where: { id: req.params.id },
+    })
       .then(result => {
         res.send(200).json(result)
       })
@@ -29,9 +30,9 @@ class ControllerMovie {
 
   static updateById(req, res, next) {
     let { title, year, imdbID, type, poster } = req.body
-    let { id } = req.params.id
+    // let { id } = req.params.id
     Movie
-      .update({ title, year, imdbID, type, poster }, { where: { id: id }, returning: true })
+      .update({ title, year, imdbID, type, poster }, { where: { id: req.params.id }, returning: true })
       .then(result => {
         res.status(200).json(result)
       })
