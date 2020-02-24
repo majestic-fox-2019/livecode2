@@ -10,7 +10,9 @@
     </v-list-item>
 
     <v-card-actions>
-      <v-btn icon><v-icon>mdi-delete</v-icon></v-btn>
+      <v-btn icon @click.prevent="deleteRating(rating.id)"
+        ><v-icon>mdi-delete</v-icon></v-btn
+      >
     </v-card-actions>
   </v-card>
 </template>
@@ -18,7 +20,12 @@
 <script>
 export default {
   name: 'RatingCards',
-  props: ['rating']
+  props: ['rating'],
+  methods: {
+    deleteRating(id) {
+      this.$store.dispatch('DELETE_RATING', id)
+    }
+  }
 }
 </script>
 

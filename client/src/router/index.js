@@ -8,7 +8,12 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: ':type'
+      }
+    ]
   },
   {
     path: '/movie/:id',
@@ -19,11 +24,6 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/Details.vue'),
     children: [
-      {
-        path: 'rate',
-        name: 'giveRates',
-        component: () => import('@/components/RatingForm')
-      },
       {
         path: 'edit',
         name: 'editMovie',

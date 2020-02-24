@@ -7,7 +7,8 @@
       <v-col cols="8">
         <router-view />
         <Toolbar />
-        <v-row>
+        <RatingForm v-if="rating" />
+        <v-row v-else>
           <v-col cols="4" v-for="(rating, i) in movie.Rates" :key="i">
             <RatingCard :rating="rating" />
           </v-col>
@@ -21,6 +22,7 @@
 import MovieCard from '@/components/MovieCard'
 import Toolbar from '@/components/RatingToolbar'
 import RatingCard from '@/components/RatingCard'
+import RatingForm from '@/components/RatingForm'
 
 export default {
   name: 'DetailPage',
@@ -30,11 +32,15 @@ export default {
   components: {
     MovieCard,
     Toolbar,
-    RatingCard
+    RatingCard,
+    RatingForm
   },
   computed: {
     movie() {
       return this.$store.state.movieDetails
+    },
+    rating() {
+      return this.$store.state.addRating
     }
   },
   mounted() {

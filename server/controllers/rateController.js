@@ -9,7 +9,7 @@ class RateController {
       point: req.body.point,
       MovieId: movieId
     }
-    if (data.point > 100) {
+    if (data.point > 100 || data.point < 0) {
       throw { msg: 'Point can only between 0-100', code: 400 }
     } else {
       Rate.create(data)

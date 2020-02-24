@@ -3,10 +3,10 @@
     <v-toolbar-title>Ratings</v-toolbar-title>
 
     <v-spacer></v-spacer>
-    <v-btn text>
+    <v-btn text @click.prevent="editMovie">
       <h4>Edit Movie Data</h4>
     </v-btn>
-    <v-btn text>
+    <v-btn text @click.prevent="showRatings">
       <h4>Show All Ratings</h4>
     </v-btn>
 
@@ -22,6 +22,17 @@ export default {
   methods: {
     addRating() {
       console.log('HEHEHE')
+      this.$store.commit('ADD_RATING', true)
+    },
+    editMovie() {
+      const id = this.$route.params.id
+      this.$router.push('/movie/' + id + '/edit')
+      this.$store.commit('ADD_RATING', false)
+    },
+    showRatings() {
+      const id = this.$route.params.id
+      this.$router.push('/movie/' + id)
+      this.$store.commit('ADD_RATING', false)
     }
   }
 }

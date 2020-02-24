@@ -1,7 +1,7 @@
 module.exports = (err, req, res, next) => {
   console.log(err)
-  const errCode = null
-  const errors = []
+  var errCode = null
+  var errors = []
   if (err.msg) {
     errCode = err.code
     errors.push(err.msg)

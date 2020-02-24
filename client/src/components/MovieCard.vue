@@ -7,16 +7,16 @@
     </v-card-title>
 
     <v-card-subtitle>
-      {{ movie.year }}
+      <h3>{{ movie.year }}</h3>
+      <h4>{{ movie.type }}</h4>
     </v-card-subtitle>
 
     <v-card-text>
-      <p>{{ movie.imdbID }}</p>
-      <p>{{ movie.type }}</p>
+      <a :href="link" target="_blank">Go to IMDB Website</a>
     </v-card-text>
 
     <v-card-actions>
-      <v-btn text @click.prevent="getDetails(movie.id)">Details</v-btn>
+      <v-btn color="green" text @click.prevent="getDetails(movie.id)">Details</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -25,7 +25,9 @@
 export default {
   name: 'MovieCard',
   data() {
-    return {}
+    return {
+      link: 'https://www.imdb.com/title/' + this.movie.imdbID
+    }
   },
   props: ['movie'],
   methods: {

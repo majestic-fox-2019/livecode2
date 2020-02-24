@@ -20,7 +20,13 @@ export default {
   },
   computed: {
     movies() {
-      return this.$store.state.movies
+      return this.$store.state.movies.filter(
+        el =>
+          el.title
+            .toLowerCase()
+            .includes(this.$store.state.searchKey.toLowerCase()) ||
+          el.type.toLowerCase() === this.$store.state.searchKey.toLowerCase()
+      )
     }
   },
   created() {
