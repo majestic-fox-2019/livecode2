@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         notNull: { msg: "year should not be null" }
       }, allowNull: false
     },
-    imdbId: {
+    imdbID: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: { msg: "imdbId should not be empty" },
@@ -30,11 +30,15 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: { msg: "type should not be empty" },
         notNull: { msg: "type should not be null" }
       }, allowNull: false
+    },
+    poster: {
+      type: DataTypes.STRING
     }
   }, { sequelize })
 
   Movie.associate = function (models) {
     // associations can be defined here
+    Movie.hasMany(models.Rating)
   };
   return Movie;
 };

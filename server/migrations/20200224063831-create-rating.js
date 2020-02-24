@@ -8,16 +8,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
+      reviewer: {
         type: Sequelize.STRING
       },
       MovieId: {
         type: Sequelize.INTEGER
       },
-      movieName: {
-        type: Sequelize.STRING
-      },
-      rating: {
+      point: {
         type: Sequelize.INTEGER
       },
       createdAt: {

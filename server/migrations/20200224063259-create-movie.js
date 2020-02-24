@@ -14,11 +14,11 @@ module.exports = {
       year: {
         type: Sequelize.STRING
       },
-      imdbId: {
+      imdbID: {
         type: Sequelize.STRING
       },
       type: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM(['movie', 'series'])
       },
       poster: {
         type: Sequelize.STRING
