@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import MovieDetails from '../views/MovieDetails.vue'
 import SeeRatings from '../views/SeeRatings.vue'
+import AddRate from '../views/AddRate.vue'
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,10 @@ const routes = [
       {
         path: 'ratings',
         component: SeeRatings
+      },
+      {
+        path: 'addRate',
+        component: AddRate
       }
     ]
   },

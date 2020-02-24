@@ -11,8 +11,8 @@
                 <h2>Type: {{$store.state.movieDetails.type}}</h2>
                 <h2>IMDB: <a :href="'https://www.imdb.com/title/' + $store.state.movieDetails.imdbID">{{$store.state.movieDetails.imdbID}}</a></h2>
                 <div class="buttons">
-                    <button>See Ratings</button>
-                    <button>Add Rating</button>
+                    <button @click.prevent="toMovieRating" style="margin-right:1%;">See Ratings</button>
+                    <button @click.prevent="toAddRate" style="margin-right:1%;">Add Rating</button>
                     <button>Edit</button>
                 </div>
               </div>
@@ -27,6 +27,14 @@
 <script>
 export default {
   name: 'MovieDetails',
+  methods: {
+      toMovieRating () {
+        this.$router.push(`/movie/${this.$route.params.id}/ratings`)
+      },
+      toAddRate () {
+        this.$router.push(`/movie/${this.$route.params.id}/addRate`)
+      }
+  },
   created () {
     this.$store.dispatch('FetchMovieDetails', {
         id: this.$route.params.id
@@ -36,15 +44,19 @@ export default {
 </script>
 
 <style scoped>
+.top {
+    text-align: left;
+}
 .buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: start;
 }
 .movieDetailsInfo {
     width: 90%;
     height: 60vh;
     display: flex;
     flex-direction: column;
+    margin-left: 5%;
 }
 .posterImg {
     height: 100%;
