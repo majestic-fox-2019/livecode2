@@ -2,7 +2,6 @@ const { Movie } = require("../models")
 
 class MovieController {
     static findAll(req, res, next) {
-        console.log("asada")
         Movie.findAll()
             .then(response => {
                 res.status(200).json(response)
