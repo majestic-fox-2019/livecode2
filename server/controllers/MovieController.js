@@ -41,19 +41,17 @@ class MovieController {
       type: req.body.type,
       poster: req.body.poster,
       imdbID: req.body.imdbID,
-      updatedAt: req.body.updateAt
+      updatedAt: Date.now()
     }
     
     const id_movie = Number(req.params.id)
-    let updateMovie
 
     Movie.findOne({
       where: { id: id_movie }
     })
     .then(result => {
       if(result){
-        updateMovie = result
-        result.update(updateData, { returning : true })
+        return result.update(updateData, { returning : true })
       }else{
         throw{
           error: 404,
@@ -61,8 +59,8 @@ class MovieController {
         }
       }
     })
-    .then(() => {
-      res.status(200).json(updateMovie)
+    .then(movie => {
+      res.status(200).json(movie)
     })
     .catch(err => {
       next(err)
@@ -92,7 +90,7 @@ class MovieController {
     })
     .then(rate => {
       if(rate){
-        rate.destroy()
+        return rate.destroy()
       }else{
         throw{
           error: 404,

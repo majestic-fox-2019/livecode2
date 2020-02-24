@@ -3,23 +3,28 @@ exports.client = function(err, req, res, next){
     let newError = new Error
     switch(err.name){
       case 'SequelizeDatabaseError':
-        next()
+        next(err)
+        break;
+      case 'SequelizeConnectionError':
+        next(err)
         break;
       case 'SequelizeValidationError':
         newError.error = 400
-        newError.message = {}
+        newError.messages = {}
         err.errors.map(el => {
-          newError.message[el.path] = el.message
+          newError.messages[el.path] = el.message
         })
         throw newError
       default:
         newError.error = err.error
-        newError.message = err.message
+        newError.messages = {
+          message: err.message
+        }
         throw newError
     }
   }
   catch(err){
-    res.status(err.error || 404).json(err)
+    res.status(err.error || 404).json(err.message || err)
   }
 }
 
