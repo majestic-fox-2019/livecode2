@@ -22,10 +22,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Please input title"
+          msg: "Please input year"
         },
         notEmpty: {
-          msg: "Please input title"
+          msg: "Please input year"
         }
       }
     },
@@ -34,10 +34,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Please input title"
+          msg: "Please input type"
         },
         notEmpty: {
-          msg: "Please input title"
+          msg: "Please input type"
         },
         isIn: {
           args: [['series', 'movie']],
@@ -50,10 +50,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Please input title"
+          msg: "Please input poster link"
         },
         notEmpty: {
-          msg: "Please input title"
+          msg: "Please input poster link"
         },
       }
     },

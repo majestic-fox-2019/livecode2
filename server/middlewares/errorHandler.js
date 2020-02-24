@@ -1,5 +1,4 @@
-module.exports = (req, res, next) => {
-    console.log('masuk di error')
+module.exports = (err, req, res, next) => {
     if (err.name == 'SequelizeDatabaseError') {
         res.status(500).json({
             errors: err.name,

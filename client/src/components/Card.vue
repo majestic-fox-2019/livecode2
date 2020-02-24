@@ -1,6 +1,10 @@
 <template>
   <div class="container mt-3">
-    <div class="card mb-3" style="max-width: 540px;" v-for="movie in movies" :key="movie.id">
+    <form class="form-inline my-2 my-lg-0" @submit.prevent="searchByType">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <div class="card mt-3 mb-3" style="max-width: 540px;" v-for="movie in movies" :key="movie.id">
       <div class="row no-gutters">
         <div class="col-md-4">
           <!-- INSERT IMAGE -->
@@ -28,6 +32,9 @@ export default {
     getData() {
       this.$store.dispatch("getMoviesData");
     }
+    // searchByType(){
+    //   this.$store.dispatch("getMoviesData", type)
+    // }
   },
   created() {
     this.getData();

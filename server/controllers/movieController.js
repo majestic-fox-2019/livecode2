@@ -14,12 +14,12 @@ class MovieController {
     }
 
     static showById(req, res, next) {
-        console.log('masuk sini')
         Movie
             .findOne({
                 where: {
                     id: req.params.id
-                }
+                },
+                include: [Rate]
             })
             .then(data => {
                 if (!data) {
@@ -32,7 +32,12 @@ class MovieController {
     }
 
     static updateMovie(req, res, next) {
-        let { title, year, type, poster, imdbId } = req.body
+        let { title, year, type, poster, imdbID } = req.body
+        if (!req.body.type) {
+            type = null
+        } else {
+            type = type.toLowerCase()
+        }
 
         Movie
             .findOne({
@@ -44,28 +49,33 @@ class MovieController {
                 if (!data) {
                     throw createError(404, 'Data not found')
                 } else {
-                    data.update({
+                    return data.update({
                         title,
                         year,
                         type,
                         poster,
-                        imdbId
+                        imdbID
                     })
                 }
+            })
+            .then(data => {
+                res.status(200).json(data)
             })
             .catch(next)
     }
 
     static addRate(req, res, next) {
-        let movieId = req.params.movieId
+        let MovieId = req.params.movieId
 
-        let { reviewer, point } = req.body
+        let { reviewer } = req.body
+
+        let point = req.body.point
 
         Rate
             .create({
                 reviewer,
                 point,
-                movieId
+                MovieId
             })
             .then(data => {
                 res.status(201).json(data)
@@ -86,8 +96,11 @@ class MovieController {
                 if (!data) {
                     throw createError(404, 'Data not found')
                 } else {
-                    res.status(200).json(data)
+                    return data.destroy()
                 }
+            })
+            .then(data => {
+                res.status(200).json({ message: "Delete rate success" })
             })
             .catch(next)
     }

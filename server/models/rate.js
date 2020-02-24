@@ -10,13 +10,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Please input title"
+          msg: "Please input point"
         },
         notEmpty: {
-          msg: "Please input title"
+          msg: "Please input point"
         },
         min: {
-          args: 0,
+          args: [0],
           msg: "Values allowed between 0 - 100"
         },
         max: {
@@ -30,10 +30,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Please input title"
+          msg: "Please input reviewer name"
         },
         notEmpty: {
-          msg: "Please input title"
+          msg: "Please input reviewer name"
         }
       }
     },
