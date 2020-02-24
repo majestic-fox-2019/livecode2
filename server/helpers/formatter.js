@@ -2,14 +2,13 @@ class Formatter {
 
   static validationErrorFormat(object){
     let error = []
-
+    let objError = {}
     for(let i = 0; i < object.length; i++){
-      let objError = {}
-      objError[object[i].path] = object[i].message
-      error.push(objError)
+      let key = object[i].path
+      objError[key] = object[i].message
     }
 
-    return error
+    return objError
   }
 
 }

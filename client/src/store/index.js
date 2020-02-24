@@ -18,8 +18,8 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getMovie({ commit }){
-      axios.get('http://localhost:3000/movies')
+    getMovie({ commit }, title=''){
+      axios.get(`http://localhost:3000/movies/?title=${title}`)
       .then(response => {
         commit('get_movies', response.data.body)
       })

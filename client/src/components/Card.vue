@@ -6,7 +6,7 @@
         <h5 class="card-title"><i class="fa fa-film" aria-hidden="true"></i> {{ movie.title }}</h5>
         <p class="card-text"><i class="fa fa-globe" aria-hidden="true"></i> {{ movie.year }}</p>
         <p class="card-text"><i class="fa fa-tag" aria-hidden="true"></i> {{ movie.type }}</p>
-        <p class="card-text"><i class="fa fa-imdb" aria-hidden="true"></i> <a href="#">IMDB</a></p>
+        <p class="card-text"><i class="fa fa-imdb" aria-hidden="true"></i> <a :href="`https://imdb.com/title/${movie.imdbID}`">IMDB</a></p>
         <router-link :to="{name : 'MovieDetail', params : { movieId : movie.id }}" class="btn btn-primary"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Movie Detail</router-link>
       </div>
     </div>

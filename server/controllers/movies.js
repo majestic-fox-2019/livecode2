@@ -1,10 +1,18 @@
 const { Movie, Rate } = require('../models/index')
+const  { Op } = require('sequelize').Sequelize
 
 class MovieController {
   static showMovies(req, res, next){
+    const title = req.query.title || ''
+
     Movie
       .findAll({
-        include : Rate
+        include : Rate,
+        where : {
+          title : {
+            [Op.like] : `%${title}%`
+          }
+        }
       })
       .then(response => {
         if(response.length > 0){
@@ -27,7 +35,8 @@ class MovieController {
       .findOne({
         where : {
           id : req.params.id
-        }
+        },
+        include : Rate
       })
       .then(response => {
         res.status(200).json({

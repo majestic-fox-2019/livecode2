@@ -10,7 +10,10 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.NUMBER,
       validate : {
         min: 0,
-        max : 100
+        max : 100,
+        notEmpty : {
+          msg : 'Point is required!'
+        }
       }
     },
     reviewer: {

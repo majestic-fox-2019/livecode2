@@ -3,6 +3,7 @@ const  { Rate } = require('../models/index')
 class RateController {
 
   static addRateMovie(req, res, next){
+    console.log(req.body)
     const objValue = {
       point : req.body.point,
       reviewer : req.body.reviewer,

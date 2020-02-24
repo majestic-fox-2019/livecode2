@@ -13,7 +13,24 @@ const routes = [
   {
     path: '/movies/:movieId',
     name: 'MovieDetail',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Detail')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Detail'),
+    children : [
+      {
+        path : '/',
+        name : 'AddRating',
+        component : () => import('../components/AddRating')
+      },
+      {
+        path : 'update',
+        name : 'UpdateMovie',
+        component : () => import('../components/UpdateMovie')
+      },
+      {
+        path : 'rating',
+        name : 'RateList',
+        component : () => import('../components/RateList')
+      },
+    ]
   },
 ]
 

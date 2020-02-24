@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
   Rate
     .findOne({
       where : {
-        id : req.params.movieId
+        id : req.params.id
       }
     })
     .then(response => {
