@@ -24,7 +24,7 @@ class MovieController {
           res.status(200).json(movie)
         } else {
           let err = {
-            statusCode: 404,
+            status: 404,
             message: 'Movie not found!'
           }
           throw err
@@ -53,7 +53,7 @@ class MovieController {
           res.status(200).json(movie[1][0])
         } else {
           let err = {
-            statusCode: 404,
+            status: 404,
             message: 'Movie not found!'
           }
           throw err

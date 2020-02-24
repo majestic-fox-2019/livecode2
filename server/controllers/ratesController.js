@@ -7,7 +7,6 @@ class RateController {
       point: Number(req.body.point),
       MovieId: req.params.movieId
     }
-    console.log(rate)
     Rate
       .create(rate)
       .then(rate => {
@@ -31,7 +30,7 @@ class RateController {
           })
         } else {
           let err = {
-            statusCode: 404,
+            status: 404,
             message: 'Rates not found!'
           }
           throw err

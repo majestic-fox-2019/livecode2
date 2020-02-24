@@ -14,9 +14,8 @@ app.use('/movies', moviesRoute)
 app.use('/rates', ratesRoute)
 
 app.use((err, req, res, next) => {
-  console.error(err.stack)
-  if (err.statusCode) {
-    res.status(err.statusCode).json({ message: err.message })
+  if (err.status) {
+    res.status(err.status).json({ message: err.message })
   } else if (err.errors) {
     let errorMessage = []
     err.errors.forEach(element => {

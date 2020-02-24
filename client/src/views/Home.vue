@@ -1,18 +1,25 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <movies :movies="allMovies" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import movies from "../components/movies";
 export default {
-  name: "Home",
   components: {
-    HelloWorld
+    movies
+  },
+  mounted() {
+    this.$store.dispatch("getMovies");
+  },
+  computed: {
+    allMovies() {
+      return this.$store.state.movies;
+    }
   }
 };
 </script>
+
+<style scoped>
+</style>
