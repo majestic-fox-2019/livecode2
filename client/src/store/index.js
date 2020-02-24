@@ -15,7 +15,6 @@ export default new Vuex.Store({
         url: 'http://localhost:3000/movies',
       })
         .then((result) => {
-      
           commit('SET_DATA', result.data);
         });
     },

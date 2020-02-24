@@ -1,4 +1,4 @@
-# live-code
+# client
 
 ## Project setup
 ```

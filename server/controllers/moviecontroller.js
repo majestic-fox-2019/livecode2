@@ -1,11 +1,14 @@
-const { Movie } = require('../models')
+const { Movie, Rate } = require('../models')
+
 const createError = require('http-errors')
 
 class MovieController{
 
   static getAllData(req,res,next){
     Movie
-    .findAll()
+    .findAll({
+      include:[Rate]
+    })
     .then(data => {
       res.status(200).json(data)
     })
