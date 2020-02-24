@@ -1,0 +1,10 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "Milala08",
+    "database": "p2_final_lc",
+    "host": "localhost",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  }
+}
