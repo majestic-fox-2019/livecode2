@@ -9,6 +9,8 @@ app.use(cors())
 const router = require('./routers/routes')
 app.use('/',router)
 
+
+
 app.listen(PORT, () => {
   console.log('listening to port', PORT)
 })

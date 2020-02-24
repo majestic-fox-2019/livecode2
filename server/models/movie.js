@@ -5,11 +5,46 @@ module.exports = (sequelize, DataTypes) => {
   class Movie extends Model{}
 
   Movie.init({
-    title: DataTypes.STRING,
-    year: DataTypes.INTEGER,
-    imdbID: DataTypes.STRING,
-    type: DataTypes.STRING,
-    poster: DataTypes.STRING
+    title:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: 'title cannot be empty'},
+        notNull: {msg: 'title cannot be empty'},
+      }
+    },
+    year:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: 'year cannot be empty'},
+        notNull: {msg: 'year cannot be empty'},
+      }
+    },
+    imdbID:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: 'imdbID cannot be empty'},
+        notNull: {msg: 'imdbID cannot be empty'},
+      }
+    },   
+    type:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: 'type cannot be empty'},
+        notNull: {msg: 'type cannot be empty'},
+      }
+    },
+    poster:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: ' poster cannot be empty'},
+        notNull: {msg: 'poster cannot be empty'},
+      }
+    }
   },{sequelize})
   
   
