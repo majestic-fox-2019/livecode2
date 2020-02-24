@@ -17,4 +17,4 @@ app.use('/', routes)
 app.use(errorHandling)
 
 
-app.listen(port, () => console.log(`App listening on port port!`))
+app.listen(port, () => console.log(`App listening on port ${port}!`))
