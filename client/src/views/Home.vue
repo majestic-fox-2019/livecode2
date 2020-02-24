@@ -1,18 +1,30 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="movie-list mt-5">
+      <v-row>
+        <v-col cols="6" v-for="(movie, i) in movies" :key="i">
+          <MovieCard :movie="movie" />
+        </v-col>
+      </v-row>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import MovieCard from '@/components/MovieCard'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    MovieCard
+  },
+  computed: {
+    movies() {
+      return this.$store.state.movies
+    }
+  },
+  created() {
+    this.$store.dispatch('FETCH_MOVIES')
   }
 }
 </script>
