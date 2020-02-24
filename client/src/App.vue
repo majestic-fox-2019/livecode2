@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link>
+      <router-link to="/">Home</router-link>|
+      <router-link to="/category/movie">Movies</router-link>|
+      <router-link to="/category/series">Series</router-link>|
+      <router-link to="/search">Search</router-link>
     </div>
     <router-view />
   </div>

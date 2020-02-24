@@ -11,7 +11,7 @@
             <b-card-text>Year Released: {{movieNya.year}}</b-card-text>
 
             <b-card-text>
-              <a href="https://www.imdb.com/">IMDB</a>
+              <a :href="'https://www.imdb.com/title/'+movieNya.imdbID">IMDB</a>
             </b-card-text>
             <b-card-text>
               <div class="btn btn-outline-success" @click="goToDetail">See Detail</div>

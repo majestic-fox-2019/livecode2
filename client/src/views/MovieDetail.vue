@@ -17,18 +17,22 @@
         </div>
       </div>
       <div class="col-6 mt-4">
-        <div class="d-flex flex-column">
-          <h1>Post a review</h1>
-          <b-form @submit="postRating">
-            <b-form-group id="reviewer" label="Your name" label-for="reviewerid">
-              <b-form-input id="reviewerid" v-model="reviewer" type="text" required></b-form-input>
-            </b-form-group>
-            <b-form-group id="point" label="Your point" label-for="point">
-              <b-form-input id="point" v-model="point" type="number" required></b-form-input>
-            </b-form-group>
-            <b-button variant="primary" type="submit">Post review</b-button>
-          </b-form>
-        </div>
+        <rating v-for="rate of rates" :key="rate.id" :detailRate="rate" @abisDelete="getDetail"></rating>
+      </div>
+    </div>
+
+    <div>
+      <div class="d-flex flex-column">
+        <h1>Post a review</h1>
+        <b-form @submit="postRating">
+          <b-form-group id="reviewer" label="Your name" label-for="reviewerid">
+            <b-form-input id="reviewerid" v-model="reviewer" type="text" required></b-form-input>
+          </b-form-group>
+          <b-form-group id="point" label="Your point" label-for="point">
+            <b-form-input id="point" v-model="point" type="number" required></b-form-input>
+          </b-form-group>
+          <b-button variant="primary" type="submit">Post</b-button>
+        </b-form>
       </div>
     </div>
 
@@ -55,27 +59,38 @@
 </template>
 
 <script>
+import rating from "../components/Rating";
 export default {
   name: "Detail Movie",
+  components: {
+    rating
+  },
   data() {
     return {
-      title: this.$store.state.movieDetail.title,
-      year: this.$store.state.movieDetail.year,
-      poster: this.$store.state.movieDetail.poster,
-      type: this.$store.state.movieDetail.type,
+      title: "hehe",
+      year: "",
+      poster: "",
+      type: "",
       options: [
         { value: "series", text: "Series" },
 
         { value: "movie", text: "Movie" }
       ],
       reviewer: "",
-      point: null
+      point: null,
+      rates: null
     };
   },
   methods: {
     getDetail() {
       let id = this.$route.params.id;
-      this.$store.dispatch("getMovieDetail", id);
+      this.$store.dispatch("getMovieDetail", id).then(() => {
+        this.title = this.$store.state.movieDetail.title;
+        this.year = this.$store.state.movieDetail.year;
+        this.poster = this.$store.state.movieDetail.poster;
+        this.type = this.$store.state.movieDetail.type;
+        this.rates = this.$store.state.movieDetail.Ratings;
+      });
     },
     onSubmit(evt) {
       evt.preventDefault();
@@ -89,18 +104,31 @@ export default {
       };
 
       // console.log(objUpdate, "<<");
-      this.$store.dispatch("updateMovie", objUpdate);
+      this.$store.dispatch("updateMovie", objUpdate).then(() => {
+        this.$bvModal.hide("editModal" + objUpdate.id);
+      });
+    },
+    postRating(e) {
+      //   console.log("masuk");
+      e.preventDefault();
+      let objRate = {
+        movieId: this.$route.params.id,
+        reviewer: this.reviewer,
+        point: this.point
+      };
+      console.log(objRate, "<<< ini post rating");
+      this.$store.dispatch("postRating", objRate).then(() => {
+        this.getDetail();
+      });
     }
   },
   mounted() {
+    // console.log("halo");
     this.getDetail();
-    // this.title = this.movieDetail.title;
-    // this.poster = this.movieDetail.poster;
-    // this.year = this.movieDetail.year;
-    // this.type = this.movieDetail.type;
   },
   computed: {
     movieDetail() {
+      //   this.title = this.$store.state.movieDetail;
       return this.$store.state.movieDetail;
     },
     paramsId() {
@@ -108,9 +136,10 @@ export default {
     }
   },
   watch: {
-    paramsId(o, n) {
+    movieDetail(o, n) {
+      //   this.getDetail();
       if (o !== n) {
-        this.getDetail();
+        // this.getDetail();
       }
     }
   }

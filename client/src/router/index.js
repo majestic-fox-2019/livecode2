@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import DetailMovie from "../views/MovieDetail.vue"
+import Category from "../views/Category.vue"
+import Search from "../views/Search"
 
 Vue.use(VueRouter)
 
@@ -23,6 +25,16 @@ const routes = [
     path: "/movie/:id",
     name: "detail movie",
     component: DetailMovie
+  },
+  {
+    path: "/category/:category",
+    name: "category",
+    component: Category
+  },
+  {
+    path: "/search",
+    name: "search",
+    component: Search
   }
 ]
 

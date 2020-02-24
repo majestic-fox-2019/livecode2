@@ -1,4 +1,5 @@
 const { Movie, Rating } = require("../models")
+const { Op } = require("sequelize")
 
 class ControlMovie {
     static getAllMovies(req, res, next) {
@@ -33,6 +34,41 @@ class ControlMovie {
             })
             .catch(err => {
                 console.log(err, "<< ini error update")
+                next(err)
+            })
+    }
+
+    static filterCategory(req, res, next) {
+        console.log(req.params, "<<<")
+        Movie.findAll({ where: { type: req.params.category } })
+            .then(ya => {
+                res.status(200).json(ya)
+            })
+            .catch(err => {
+                console.log(err, "<< ini error")
+                next(err)
+            })
+    }
+
+    static fitlerByTitle(req, res, next) {
+        console.log("MASUK KOK")
+        let searchnya = `%${req.params.search}%`
+        Movie.findAll({
+            // where: {
+            //     $or: [
+            //         { title: { $or: searchnya } }
+            //     ]
+            // }
+            where: {
+                [Op.like]: searchnya
+            }
+
+        })
+            .then(filteredTitle => {
+                res.status(200).json(filteredTitle)
+            })
+            .catch(err => {
+                console.log(err, "<< ini erro filter")
                 next(err)
             })
     }

@@ -1,7 +1,7 @@
 function errorHandler(err, req, res, next) {
     // console.log(err, "<< ini error")
     if (err.code) {
-        res.status(err.code).json({ errors: err, message: "Failed to get movies" })
+        res.status(err.code).json({ errors: err, message: err.message })
     } else if (err.errors) {
         let errornya = []
         console.log(err.errors)
