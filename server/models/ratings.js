@@ -9,7 +9,12 @@ module.exports = (sequelize, DataTypes) => {
   Ratings.init({
     point: {
       type : DataTypes.INTEGER,
+      allowNull : false,
       validate : {
+        notNull: {
+          args : true,
+          msg : 'Reviewer name cant be empty'
+        },
         isNumeric : {
           args: true,
           msg : 'Please input numbers'
@@ -24,7 +29,16 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    reviewer: DataTypes.STRING,
+    reviewer: {
+      type : DataTypes.STRING,
+      allowNull : false,
+      validate : {
+        notNull: {
+          args : true,
+          msg : 'Reviewer name cant be empty'
+        }
+      }
+    },
     MoviesId : DataTypes.INTEGER
   }, {sequelize});
   Ratings.associate = function(models) {

@@ -19,7 +19,7 @@
 <script>
 export default {
     props : ['movie'],
-    method : {
+    methods : {
         goToMovieDetails(id){
             console.log('masuk ke gotomoviedetiual')
             this.$router.push('/movies/'+id)
