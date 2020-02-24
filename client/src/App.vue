@@ -1,32 +1,26 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <nav class="navbar navbar-dark bg-primary">
+        <router-link to="/">Home</router-link>
+        <router-link to="/movies">Movies</router-link>
+      </nav>
     </div>
     <router-view/>
   </div>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  @import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css";
 
-#nav {
-  padding: 30px;
-}
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 17pt;
+  }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  a:hover{ 
+    text-decoration: none;
+    color: lightblue;
+  }
 </style>
