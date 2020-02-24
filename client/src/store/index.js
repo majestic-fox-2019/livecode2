@@ -21,6 +21,10 @@ export default new Vuex.Store({
     },
     SET_MOVIE(state, payload){
       state.movie = payload
+    },
+    FILTER_BY_NAME(state, query){
+      const regex = new RegExp(query,'i')
+      state.movies.filter(movie => movie.title.match(regex))
     }
   },
   actions: {
@@ -95,10 +99,13 @@ export default new Vuex.Store({
         }
       })
       .then(({data})=>{
-        swal.fire('sucessfully updated '+data.title)
+        swal.fire('sucessfully updated')
         dispatch('getOneMovie', state.movieId)
         router.push('/movies/'+state.movieId)
       })
+    },
+    filterByName(state, query){
+      state.commit('FILTER_BY_NAME', query)
     }
   },
   modules: {

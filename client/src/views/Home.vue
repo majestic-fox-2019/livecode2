@@ -1,6 +1,10 @@
 <template>
   <div class="home">
     <div class="row justify-content-center">
+      <div class="row m-3">
+        <input v-model="query" type="text" name="search" id="" placeholder="search...">
+        <button @click="filterByName" class="btn btn-dark">Search</button>
+      </div>
       <div class="col-12 col-centered">
         <MovieCard v-for="(movie, i) in movies" :key='i' :movie="movie"/>
       </div>
@@ -23,6 +27,16 @@ export default {
   computed : {
     movies : function (){
       return this.$store.state.movies
+    }
+  },
+  data(){
+    return {
+      query : null
+    }
+  },
+  methods : {
+    filterByName(){
+      this.$store.dispatch('filterByName', this.query)
     }
   }
 }
