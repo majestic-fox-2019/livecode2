@@ -47,7 +47,7 @@ export default new Vuex.Store({
         .catch(({ response }) => {
           Swal.close()
           const errors = response.data
-          console.log(errors)
+          Swal.fire('Error', errors.errors[0], 'error')
         })
     },
     FETCH_DETAILS(context, val) {
@@ -58,7 +58,7 @@ export default new Vuex.Store({
         })
         .catch(({ response }) => {
           const errors = response.data
-          console.log(errors)
+          Swal.fire('Error', errors.errors[0], 'error')
         })
     },
     EDIT_MOVIE(context) {
@@ -77,7 +77,7 @@ export default new Vuex.Store({
         .catch(({ response }) => {
           Swal.close()
           const errors = response.data
-          console.log(errors)
+          Swal.fire('Error', errors.errors[0], 'error')
         })
     },
     ADD_RATING(context, val) {
@@ -107,7 +107,7 @@ export default new Vuex.Store({
         .catch(({ response }) => {
           Swal.close()
           const errors = response.data
-          console.log(errors)
+          Swal.fire('Error', errors.errors[0], 'error')
         })
     }
   }
