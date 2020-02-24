@@ -10,6 +10,8 @@
       />
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+    <button class="btn btn-outline-info btn-sm my-2 my-sm-0" @click="getSeries('series')">Series</button>
+    <button class="btn btn-outline-info btn-sm my-2 my-sm-0" @click="getMovie('movie')">Movies</button>
     <movies :movies="allMovies" />
   </div>
 </template>
@@ -24,7 +26,10 @@ export default {
     return {
       search: {
         input: null
-      }
+      },
+      series: [],
+      movies: [],
+      searchResult: []
     };
   },
   mounted() {
@@ -32,12 +37,37 @@ export default {
   },
   computed: {
     allMovies() {
-      return this.$store.state.movies;
+      if (this.series.length > 0) {
+        return this.series;
+      } else if (this.movies.length > 0) {
+        return this.movies;
+      } else {
+        return this.$store.state.movies;
+      }
     }
   },
   methods: {
+    showAll() {
+      this.movies = this.allMovies;
+    },
+    getSeries(type) {
+      this.movies = [];
+      this.allMovies.forEach(movie => {
+        if (movie.type == type) {
+          this.series.push(movie);
+        }
+      });
+    },
+    getMovie(type) {
+      this.series = [];
+      this.allMovies.forEach(movie => {
+        if (movie.type == type) {
+          this.movies.push(movie);
+        }
+      });
+    },
     searchMovies() {
-      console.log(this.search);
+      console.log(this.search.input);
     }
   }
 };
