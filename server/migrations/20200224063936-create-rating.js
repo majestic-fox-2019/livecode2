@@ -8,14 +8,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
+      reviewer: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
-      score: {
-        type: Sequelize.INTEGER
+      point: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       MovieId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
