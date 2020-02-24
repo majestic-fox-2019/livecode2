@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Rate.associate = function(models) {
     // associations can be defined here
+    Rate.belongsTo(models.Movie);
   };
   return Rate;
 };
