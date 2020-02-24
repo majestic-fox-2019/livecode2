@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <center><h1>Welcome to wordclass movie apps</h1></center>
+    <center><h1>Welcome to World Class movie apps</h1></center>
   </div>
 </template>
 

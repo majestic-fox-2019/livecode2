@@ -13,7 +13,18 @@ const routes = [
   {
     path: '/movies',
     name: 'Movies',
-    component: () => import('../views/Movie.vue')
+    component: () => import('../views/Movie.vue'),
+  },
+  {
+    path: '/movies/:id',
+    name: 'Movie Detail',
+    component: () => import('../views/MovieDetail.vue'),
+    children: [
+      {
+        path: 'edit',
+        component: () => import('../views/EditMovie.vue')
+      }
+    ]
   }
 ]
 
