@@ -10,7 +10,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     movies: [],
-    movie: {}
+    movie: {},
+    whatNowShow: "rating",
+    idMovie: ""
   },
   mutations: {
     setMovies(state, payload) {
@@ -30,7 +32,11 @@ export default new Vuex.Store({
           context.commit('setMovies', data)
         })
         .catch(err => {
-          console.log(err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.response.data,
+          })
         })
     },
     findOneMovie(context, payload) {
@@ -40,9 +46,77 @@ export default new Vuex.Store({
       })
         .then(({ data }) => {
           context.commit('setMovie', data)
+          this.idMovie = data.id
         })
         .catch(err => {
-          console.log(err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.response.data,
+          })
+        })
+    },
+    removeReview(context, payload) {
+      axios({
+        url: `${baseUrl}/rate/${payload}`,
+        method: 'DELETE'
+      })
+        .then(({ data }) => {
+          context.dispatch('findOneMovie', this.idMovie)
+        })
+        .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.response.data,
+          })
+        })
+    },
+    addNewReviewer(context, payload) {
+      axios({
+        url: `${baseUrl}/rate/${this.idMovie}`,
+        method: 'POST',
+        data: {
+          reviewer: payload.reviewer,
+          point: Number(payload.point)
+        }
+      })
+        .then(({ data }) => {
+          context.dispatch('findOneMovie', this.idMovie)
+          this.whatNowShow = 'rating'
+          this.$router.push(`/${this.idMovie}`);
+        })
+        .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.response.data,
+          })
+        })
+    },
+    editMovie(context, payload) {
+      console.log(this.state.movie.title);
+      axios({
+        url: `${baseUrl}/movies/${this.idMovie}`,
+        method: "PUT",
+        data: {
+          title: this.state.movie.title,
+          year: this.state.movie.year,
+          type: this.state.movie.type,
+          poster: this.state.movie.poster,
+          imdbID: this.state.movie.imdbID
+        }
+      })
+        .then(({ data }) => {
+          context.dispatch('findOneMovie', this.idMovie)
+          this.whatNowShow = 'rating'
+        })
+        .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.response.data,
+          })
         })
     }
   },

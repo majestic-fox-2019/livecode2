@@ -6,17 +6,21 @@
         <div class="card-body">
           <h3 class="card-title">{{movie.title}}</h3>
           <h4>{{movie.year}}</h4>
-          <a class="card-text">{{movie.imdbID}}</a>
-          <p class="card-text">type: {{movie.type}}</p>
         </div>
-        <router-link to="/movie.id" class="btn btn-dark">Get Detail</router-link>
+        <button @click="findOne(movie.id)" class="btn btn-dark">Get Detail</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    findOne(id) {
+      this.$router.push(`/${id}`);
+    }
+  }
+};
 </script>
 
 <style>
@@ -24,6 +28,6 @@ img {
   max-height: 50vh;
 }
 .card-body {
-  min-height: 40vh;
+  min-height: 30vh;
 }
 </style>

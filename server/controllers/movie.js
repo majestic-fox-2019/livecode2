@@ -15,15 +15,14 @@ class controllerMovie {
             }).catch(next);
     }
     static findOne(req, res, next) {
-        Movie.findOne({
-            include: [{
-                model: Rating
-            }]
-        },
+        Movie.findOne(
             {
                 where: {
                     id: req.params.id
-                }
+                },
+                include: [{
+                    model: Rating
+                }]
             })
             .then((movie) => {
                 res.status(200).json(movie)

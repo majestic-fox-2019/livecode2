@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: "point can only between 0 - 100"
         },
         min: {
-          args: 0,
+          args: 1,
           msg: "point can only between 0 - 100"
         }
       }

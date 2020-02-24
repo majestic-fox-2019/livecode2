@@ -1,24 +1,26 @@
 <template>
-  <div class="row">
-    <div class="col mt-5">
-      <div class="card" style="width: 18rem;">
-        <img
-          src="https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg"
-          class="card-img-top"
-        />
-        <div class="card-body">
-          <h3 class="card-title">title: title</h3>
-          <h4>year: year</h4>
-          <a class="card-text">imdb:imdb</a>
-          <p class="card-text">type: type</p>
-        </div>
+  <div class="col mt-5">
+    <div class="card" style="width: 18rem;">
+      <img :src="this.$store.state.movie.poster" class="card-img-top" />
+      <div class="card-body">
+        <h3 class="card-title">{{this.$store.state.movie.title}}</h3>
+        <h4>{{this.$store.state.movie.year}}</h4>
+        <a
+          :href="'https://www.imdb.com/title/' + this.$store.state.movie.imdbID"
+          class="card-text"
+        >IMDB</a>
+        <p class="card-text">type: {{this.$store.state.movie.type}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  created() {
+    this.$store.dispatch("findOneMovie", this.$route.params.id);
+  }
+};
 </script>
 
 <style>
