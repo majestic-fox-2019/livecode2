@@ -59,6 +59,8 @@ export default {
         }
       })
       .then(res => {
+        this.reviewer=''
+        this.point=''
         Swal.fire({
           title: 'Success add rate!',
           text: 'success add rate',

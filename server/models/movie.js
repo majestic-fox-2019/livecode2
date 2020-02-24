@@ -27,7 +27,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         isNumeric: {
           msg: "year harus number"
-        }
+        },
+        min: {
+          args: [0],
+          msg: "year tidak bisa minus"
+        },
       },
     },
     type: {

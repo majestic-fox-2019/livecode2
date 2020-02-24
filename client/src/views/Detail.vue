@@ -3,7 +3,7 @@
     <div class="p-2">
       <router-link :to="{name:'Home'}" class="btn btn-primary">HOME</router-link>
     </div>
-    <div class="row p-5">
+    <div class="row pl-5">
       <div class="card" style="width: 18rem;">
         <img :src="movie.poster" class="card-img-top">
         <div class="card-body text-center">
