@@ -1,3 +1,11 @@
 const router = require('express').Router()
 
-const movies = (module.exports = router)
+const movie = require('./movie')
+
+const rate = require('./rate')
+
+router.use('/movies', movie)
+
+router.use('/rate', rate)
+
+module.exports = router

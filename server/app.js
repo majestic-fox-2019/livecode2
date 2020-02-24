@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV == 'test' || process.env.NODE_ENV == 'development') {
-  require('dotenv').config()
-}
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
@@ -18,4 +16,4 @@ const errorHandler = require('./middlewares/errorHandler')
 
 app.use(errorHandler)
 
-app.listen(port, () => console.log(`Example app listening on port port!`))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
