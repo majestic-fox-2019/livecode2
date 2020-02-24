@@ -39,8 +39,20 @@ class MovieController {
       }, {
         where: {
           id
-        }
+        },
+        returning: true
       })
+      // then
+      if (!updatedMovie[0]) {
+        res.status(304);
+        res.json({
+          message: "No item is modified"
+        });
+      }
+      else {
+        res.status(200);
+        res.json(updatedMovie[1][0]);
+      }
     } catch (err) {
       next(err);
     }
