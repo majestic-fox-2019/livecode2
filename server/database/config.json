@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "lc_movie-app-dev",
+    "database": "p2_final_lc",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
