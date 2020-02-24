@@ -52,14 +52,15 @@ export default {
     width: 90vw;
     display: flex;
     margin-bottom: 2%;
+    justify-content: center;
 }
 .moviePoster {
     height: 100%;
-    width: 50%;
+    width: 30%;
 }
 .movieDetails {
     height: 100%;
-    width: 10%;
+    width: 30%;
     text-align: center;
 }
 </style>

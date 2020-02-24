@@ -2,6 +2,7 @@
   <div class="home">
     <h1>Movie List</h1>
     <div class="filter">
+      <h4>Filter by:</h4>
       <button class="filterButton" @click.prevent="filterbyType('series')">Series</button>
       <button class="filterButton" @click.prevent="filterbyType('all')">All</button>
       <button class="filterButton" @click.prevent="filterbyType('movie')">Movie</button>

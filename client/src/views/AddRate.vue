@@ -4,11 +4,11 @@
     <form @submit.prevent="addRate">
       <label class="inputLabel" for="reviewer">Reviewer Name:</label>
       <br>
-      <input class="inputBox" type="text" id="reviewer" v-model="form.reviewer" placeholder="Enter Reviewer Name">
+      <input required class="inputBox" type="text" id="reviewer" v-model="form.reviewer" placeholder="Enter Reviewer Name">
       <br>
       <label class="inputLabel" for="points">Points:</label>
       <br>
-      <input class="inputBox" type="number" id="points" v-model="form.points" placeholder="Enter Points">
+      <input required class="inputBox" type="number" id="points" v-model="form.points" placeholder="Enter Points">
       <br>
       <button type="submit" class="submitButton">Submit</button>
     </form>

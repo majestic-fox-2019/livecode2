@@ -8,10 +8,13 @@
           <div class="movieDetailsInfo">
               <div class="top">
                 <h2 style="margin-bottom:0;">Year</h2>
+                <hr class="underline">
                 <h3 style="margin:0;">{{$store.state.movieDetails.year}}</h3>
                 <h2 style="margin-bottom:0;">Type</h2>
+                <hr class="underline">
                 <h3 style="margin:0;">{{$store.state.movieDetails.type}}</h3>
                 <h2 style="margin-bottom:0;">IMDB</h2>
+                <hr class="underline">
                 <a :href="'https://www.imdb.com/title/' + $store.state.movieDetails.imdbID">{{$store.state.movieDetails.imdbID}}</a>
                 <div class="buttons">
                     <button class="detailButton" @click.prevent="toMovieRating">See Ratings</button>
@@ -51,6 +54,13 @@ export default {
 </script>
 
 <style scoped>
+.top h3 {
+    color: #646464;
+}
+.underline {
+    width: 100%;
+    border-bottom: 1px solid black;
+}
 .top {
     text-align: left;
     display: flex;

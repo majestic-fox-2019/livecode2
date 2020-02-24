@@ -54,6 +54,7 @@ class MovieController {
         .then(filteredMovie => {
             if(!filteredMovie) {
                 throw({
+                    name: 'customError',
                     errors: 'type not found',
                     message: "Type must be 'movie' or 'series'"
                 })

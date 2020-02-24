@@ -4,25 +4,25 @@
       <form @submit.prevent="editMovie">
           <label class="inputLabel" for="Title">Title:</label>
           <br>
-          <input class="inputBox" type="text" id="title" v-model="form.title">
+          <input required class="inputBox" type="text" id="title" v-model="form.title">
           <br>
           <label class="inputLabel" for="year">Year:</label>
           <br>
-          <input class="inputBox" type="number" id="year" v-model="form.year">
+          <input required class="inputBox" type="number" id="year" v-model="form.year">
           <br>
           <label class="inputLabel" for="imdbId">IMDB ID:</label>
           <br>
-          <input class="inputBox" type="text" id="imdbId" v-model="form.imdbId">
+          <input required class="inputBox" type="text" id="imdbId" v-model="form.imdbId">
           <br>
           <label class="inputLabel" for="type">Type:</label>
           <br>
-            <select class="inputBox" id="type" name="TypeList">
+            <select required class="inputBox" id="type" name="TypeList">
                 <option v-for="(type, i) in types" :key="i" :value="type.name">{{type.display}}</option>
             </select>
           <br>
           <label class="inputLabel" for="poster">Poster:</label>
           <br>
-          <input class="inputBox" type="text" id="poster" v-model="form.poster">
+          <input required class="inputBox" type="text" id="poster" v-model="form.poster">
           <br>
           <button class="editButton" type="submit">Edit Movie</button>
       </form>
