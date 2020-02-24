@@ -1,0 +1,4 @@
+USERNAME_DEV="postgres"
+PASSWORD_DEV="postgres"
+DATABASE_DEV="p2_final_lc"
+HOST_DEV="localhost"
