@@ -32,8 +32,9 @@ export default new Vuex.Store({
       .catch(err => {
         let message = ''
         err.response.data.message.forEach(element => {
-          message += `${element} `
+          message += `${element} ,`
         });
+        message = message.slice(0, message.length-2)
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -52,8 +53,9 @@ export default new Vuex.Store({
       .catch(err => {
         let message = ''
         err.response.data.message.forEach(element => {
-          message += `${element} `
+          message += `${element} ,`
         });
+        message = message.slice(0, message.length-2)
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -84,8 +86,9 @@ export default new Vuex.Store({
       .catch(err => {
         let message = ''
         err.response.data.message.forEach(element => {
-          message += `${element} `
+          message += `${element} ,`
         });
+        message = message.slice(0, message.length-2)
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -111,8 +114,9 @@ export default new Vuex.Store({
       .catch(err => {
         let message = ''
         err.response.data.message.forEach(element => {
-          message += `${element} `
+          message += `${element} ,`
         });
+        message = message.slice(0, message.length-2)
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -149,8 +153,9 @@ export default new Vuex.Store({
       .catch(err => {
         let message = ''
         err.response.data.message.forEach(element => {
-          message += `${element} `
+          message += `${element} ,`
         });
+        message = message.slice(0, message.length-2)
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -169,8 +174,9 @@ export default new Vuex.Store({
       .catch(err => {
         let message = ''
         err.response.data.message.forEach(element => {
-          message += `${element} `
+          message += `${element} ,`
         });
+        message = message.slice(0, message.length-2)
         Swal.fire({
           icon: 'error',
           title: 'Oops...',

@@ -35,9 +35,10 @@ module.exports = (sequelize, DataTypes) => {
           args: 100,
           msg: 'Point cannot be higher than 100'
         },
-        min: {
-          args: -1,
-          msg: 'Point cannot be lower than 0'
+        lessThan(value) {
+          if (value < 0 ) {
+            throw new Error('Point cannot be lower than 0');
+          }
         }
       }
     },
