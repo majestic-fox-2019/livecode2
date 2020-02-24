@@ -4,11 +4,80 @@ module.exports = (sequelize, DataTypes) => {
 
   class Movie extends Model {}
   Movie.init({
-    title: DataTypes.STRING,
-    year: DataTypes.INTEGER,
-    imdbID: DataTypes.STRING,
-    type: DataTypes.STRING,
-    poster: DataTypes.STRING
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'title cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'Please fill in the title field'
+        }
+      }
+    },
+    year: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'year cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'Please fill in the year field'
+        }
+      }
+    },
+    imdbID: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'imbdId cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'Please fill in the imbdId field'
+        }
+      }
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'type cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'Please fill in the type field'
+        },
+        isIn: {
+          args: [['movie ', 'series']],
+          msg: "Type can only be 'series' or 'movie'"
+        }
+      }
+    },
+    poster: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'poster cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'Please fill in the poster field'
+        }
+      }
+    }
   },{
     sequelize
   })
