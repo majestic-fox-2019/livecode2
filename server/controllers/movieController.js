@@ -4,7 +4,9 @@ class MovieController {
   // show all movie
   static async showAll(req, res, next) {
     try {
-      const foundMovies = await Movie.findAll();
+      const foundMovies = await Movie.findAll({
+        order: [["id"]]
+      });
       // then
       res.status(200);
       res.json(foundMovies);
